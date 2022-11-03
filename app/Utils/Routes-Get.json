@@ -1,0 +1,7 @@
+[
+  {
+    "url": "/",
+    "controller": "Home",
+    "class": "index"
+  }
+]

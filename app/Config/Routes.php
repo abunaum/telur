@@ -35,7 +35,11 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$rg = file_get_contents(APPPATH . "Utils/Routes-Get.json");
+$rout = json_decode($rg, true);
+foreach ($rout as $r) {
+    $routes->get($r["url"], $r["controller"] . "::" . $r["class"]);
+}
 
 /*
  * --------------------------------------------------------------------
