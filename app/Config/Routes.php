@@ -17,7 +17,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Admin');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -35,10 +35,16 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$rg = file_get_contents(APPPATH . "Utils/Routes-Get.json");
+$rg = file_get_contents(APPPATH . "Utils/Routes.json");
 $rout = json_decode($rg, true);
 foreach ($rout as $r) {
-    $routes->get($r["url"], $r["controller"] . "::" . $r["class"]);
+    if ($r["methode"] = "get") {
+        foreach ($r["data"] as $data) {
+            if (!array_key_exists("div", $data)) {
+                $routes->get($data["url"], $data["controller"] . "::" . $data["class"]);
+            }
+        }
+    }
 }
 
 /*

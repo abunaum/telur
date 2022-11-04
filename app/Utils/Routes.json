@@ -1,0 +1,51 @@
+[
+  {
+    "method": "get",
+    "data": [
+      {
+        "url": "/",
+        "controller": "Admin",
+        "class": "index",
+        "name": "Dashboard",
+        "list": true,
+        "icon": "bi bi-grid"
+      },
+      {
+        "div": true,
+        "text": "Transaksi"
+      },
+      {
+        "url": "/transaksi",
+        "controller": "Admin",
+        "class": "transaksi",
+        "name": "List Transaksi",
+        "list": true,
+        "icon": "bi bi-grid"
+      },
+      {
+        "div": true,
+        "text": "Bendahara"
+      },
+      {
+        "url": "/bendahara",
+        "controller": "Admin",
+        "class": "bendahara",
+        "name": "List Bendahara",
+        "list": true,
+        "icon": "bi bi-grid"
+      },
+      {
+        "div": true,
+        "text": "User"
+      },
+      {
+        "url": "/user",
+        "controller": "Admin",
+        "class": "user",
+        "name": "List User",
+        "list": true,
+        "icon": "bi bi-grid"
+      }
+    ]
+  }
+]

@@ -2,114 +2,93 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Admin Naum Market">
-    <meta name="author" content="Abunaum">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Title Page-->
-    <title><?= $judul; ?></title>
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-    <!-- Fontfaces CSS-->
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/css/font-face.css" rel="stylesheet" media="all">
-    <script src="https://kit.fontawesome.com/1ef64ee6ba.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Bootstrap CSS-->
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS-->
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-    <!-- Main CSS-->
-    <link href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/css/theme.css" rel="stylesheet" media="all">
-    <link rel="shortcut icon" href="<?= base_url('tokolancer.ico'); ?>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/js/swal2/sweetalert2.min.css">
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
     <?= $this->renderSection('head'); ?>
-
 </head>
 
-<body class="animsition">
-    <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="<?= base_url('admin'); ?>">
-                            <img src="<?= base_url(); ?>/logotoko.png" alt="Abunaum" />
-                        </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <?= $this->include('mypanel/navbar') ?>
-        </header>
-        <!-- END HEADER MOBILE-->
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
 
-        <!-- MENU SIDEBAR-->
-        <?= $this->include('mypanel/sidebar') ?>
-        <!-- END MENU SIDEBAR-->
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">Farm Telur</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
 
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <?= $this->include('mypanel/headerdekstop') ?>
-            <!-- HEADER DESKTOP-->
+        <?= $this->include('panel/navbar') ?>
 
-            <!-- MAIN CONTENT-->
-            <?= $this->renderSection('content'); ?>
-            <!-- END MAIN CONTENT-->
+    </header><!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <?= $this->include('panel/sidebar') ?>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section dashboard">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright">
-                        <p>Copyright © <?= date('Y') ?> <?= $_SERVER['HTTP_HOST'] ?>. All rights reserved. Template by <a href="https://facebook.com/ahmad.yani.ardath">Abunaum</a>.</p>
-                    </div>
-                </div>
+                <?= $this->renderSection('content'); ?>
             </div>
-            <!-- END PAGE CONTAINER-->
+        </section>
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Unuja</span></strong>. All Rights Reserved
         </div>
+        <div class="credits">
+            Designed by <a href="https://google.com/">Afif</a>
+        </div>
+    </footer><!-- End Footer -->
 
-    </div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Jquery JS-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS-->
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/slick/slick.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/wow/wow.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/animsition/animsition.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/vendor/select2/select2.min.js">
-    </script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/quill/quill.min.js"></script>
 
-    <!-- Main JS-->
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/mypanel/js/main.js"></script>
-    <!-- Extra JS Gua-->
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/js/swal2/sweetalert2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/abunaum/naum-market-css-js@master/js/swal2/swall.js"></script>
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
     <?= $this->renderSection('script'); ?>
 
 </body>

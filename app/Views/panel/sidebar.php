@@ -1,14 +1,30 @@
-<aside class="menu-sidebar d-none d-lg-block">
-    <div class="logo">
-        <a href="<?= base_url('admin'); ?>">
-            <img src="<?= base_url(); ?>/logotoko.png" style="width: 100%; height: auto;" alt="Abunaum" />
-        </a>
-    </div>
-    <div class="menu-sidebar__content js-scrollbar1">
-        <nav class="navbar-sidebar">
-            <ul class="list-unstyled navbar__list">
-                <?= $this->include('mypanel/menu') ?>
-            </ul>
-        </nav>
-    </div>
-</aside>
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <?php
+        $rg = file_get_contents(APPPATH . "Utils/Routes.json");
+        $rout = json_decode($rg, true);
+        foreach ($rout as $r) {
+            if ($r["methode"] = "get") {
+                foreach ($r["data"] as $data) {
+                    if (array_key_exists("div", $data)) {
+        ?>
+                        <li class="nav-heading"><?= $data['text']; ?></li>
+                    <?php
+                    } else {
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link " href="<?= $data['url']; ?>">
+                                <i class="<?= $data['icon']; ?>"></i>
+                                <span><?= $data['name']; ?></span>
+                            </a>
+                        </li>
+        <?php
+                    }
+                }
+            }
+        }
+        ?>
+    </ul>
+
+</aside><!-- End Sidebar-->
