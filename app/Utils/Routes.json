@@ -3,6 +3,13 @@
     "method": "get",
     "data": [
       {
+        "url": "/login",
+        "controller": "Auth",
+        "class": "index",
+        "name": "Dashboard",
+        "list": false
+      },
+      {
         "url": "/",
         "controller": "Admin",
         "class": "index",
