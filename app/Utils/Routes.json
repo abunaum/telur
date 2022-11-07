@@ -6,20 +6,27 @@
         "url": "/login",
         "controller": "Auth",
         "class": "index",
-        "name": "Dashboard",
         "list": false
       },
       {
         "url": "/",
+        "controller": "Auth",
+        "class": "cekrole",
+        "list": false
+      },
+      {
+        "url": "/admin-dashboard",
         "controller": "Admin",
         "class": "index",
         "name": "Dashboard",
         "list": true,
-        "icon": "bi bi-grid"
+        "icon": "bi bi-grid",
+        "role": "admin"
       },
       {
         "div": true,
-        "text": "Transaksi"
+        "text": "Transaksi",
+        "role": "admin"
       },
       {
         "url": "/transaksi",
@@ -27,11 +34,13 @@
         "class": "transaksi",
         "name": "List Transaksi",
         "list": true,
-        "icon": "bi bi-grid"
+        "icon": "bi bi-grid",
+        "role": "admin"
       },
       {
         "div": true,
-        "text": "Bendahara"
+        "text": "Bendahara",
+        "role": "admin"
       },
       {
         "url": "/bendahara",
@@ -39,11 +48,13 @@
         "class": "bendahara",
         "name": "List Bendahara",
         "list": true,
-        "icon": "bi bi-grid"
+        "icon": "bi bi-grid",
+        "role": "admin"
       },
       {
         "div": true,
-        "text": "User"
+        "text": "User",
+        "role": "admin"
       },
       {
         "url": "/user",
@@ -51,7 +62,17 @@
         "class": "user",
         "name": "List User",
         "list": true,
-        "icon": "bi bi-grid"
+        "icon": "bi bi-grid",
+        "role": "admin"
+      },
+      {
+        "url": "/bendahara-dashboard",
+        "controller": "Admin",
+        "class": "user",
+        "name": "Dashboard",
+        "list": true,
+        "icon": "bi bi-grid",
+        "role": "bendahara"
       }
     ]
   }
