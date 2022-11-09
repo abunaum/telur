@@ -1,0 +1,7 @@
+[
+  {
+    "url": "/admin/user/tambah",
+    "controller": "Admin",
+    "class": "tambah_user"
+  }
+]

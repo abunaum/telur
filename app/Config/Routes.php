@@ -35,18 +35,29 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$rg = file_get_contents(APPPATH . "Utils/Routes.json");
-$rout = json_decode($rg, true);
-foreach ($rout as $r) {
-    if ($r["methode"] = "get") {
-        foreach ($r["data"] as $data) {
-            if (!array_key_exists("div", $data)) {
-                $routes->get($data["url"], $data["controller"] . "::" . $data["class"]);
-            }
+$rg = file_get_contents(APPPATH . "Utils/RoutesGet.json");
+$routget = json_decode($rg, true);
+foreach ($routget as $rget) {
+    if (!array_key_exists("div", $rget)) {
+        if (array_key_exists("role", $rget)) {
+            $role = $rget['role'];
+            $routes->get($rget["url"], $rget["controller"] . "::" . $rget["class"], ['filter' => "role:$role"]);
+        } else {
+            $routes->get($rget["url"], $rget["controller"] . "::" . $rget["class"]);
         }
     }
 }
 
+$rp = file_get_contents(APPPATH . "Utils/RoutesPost.json");
+$routpost = json_decode($rp, true);
+foreach ($routpost as $rpost) {
+    if (array_key_exists("role", $rpost)) {
+        $role = $rpost['role'];
+        $routes->post($rpost["url"], $rpost["controller"] . "::" . $rpost["class"], ['filter' => "role:$role"]);
+    } else {
+        $routes->post($rpost["url"], $rpost["controller"] . "::" . $rpost["class"]);
+    }
+}
 
 
 /*

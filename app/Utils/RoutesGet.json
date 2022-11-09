@@ -1,0 +1,74 @@
+[
+  {
+    "url": "/login",
+    "controller": "Auth",
+    "class": "index",
+    "list": false
+  },
+  {
+    "url": "/",
+    "controller": "Auth",
+    "class": "cekrole",
+    "list": false
+  },
+  {
+    "url": "/admin-dashboard",
+    "controller": "Admin",
+    "class": "index",
+    "name": "Dashboard",
+    "list": true,
+    "icon": "ri-home-2-line",
+    "role": "admin"
+  },
+  {
+    "div": true,
+    "text": "Transaksi",
+    "role": "admin"
+  },
+  {
+    "url": "/transaksi",
+    "controller": "Admin",
+    "class": "transaksi",
+    "name": "List Transaksi",
+    "list": true,
+    "icon": "ri-shopping-cart-2-line",
+    "role": "admin"
+  },
+  {
+    "div": true,
+    "text": "Bendahara",
+    "role": "admin"
+  },
+  {
+    "url": "/bendahara",
+    "controller": "Admin",
+    "class": "bendahara",
+    "name": "List Bendahara",
+    "list": true,
+    "icon": "ri-money-dollar-circle-line",
+    "role": "admin"
+  },
+  {
+    "div": true,
+    "text": "User",
+    "role": "admin"
+  },
+  {
+    "url": "/user",
+    "controller": "Admin",
+    "class": "user",
+    "name": "List User",
+    "list": true,
+    "icon": "ri-account-circle-line",
+    "role": "admin"
+  },
+  {
+    "url": "/bendahara-dashboard",
+    "controller": "Admin",
+    "class": "user",
+    "name": "Dashboard",
+    "list": true,
+    "icon": "ri-home-2-line",
+    "role": "bendahara"
+  }
+]

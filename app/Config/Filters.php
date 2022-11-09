@@ -25,8 +25,8 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'login'      => \App\Filters\LoginFilter::class,
-        // 'role'       => \Myth\Auth\Filters\RoleFilter::class,
-        // 'permission' => \Myth\Auth\Filters\PermissionFilter::class,
+        'role'       => \App\Filters\RoleFilter::class,
+        'permission' => \App\Filters\Filters\PermissionFilter::class,
     ];
 
     /**
@@ -40,7 +40,7 @@ class Filters extends BaseConfig
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
-            'login'
+            // 'login'
         ],
         'after' => [
             'toolbar',
