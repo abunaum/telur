@@ -50,9 +50,11 @@ abstract class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
         $this->namaweb = "LEGI JAYA FARM";
         helper('auth');
+        session();
 
         // Model
         $this->MUser = new \App\Models\UserModel();
+        $this->User = new \App\Models\User();
         $this->Group = new \App\Models\Auth_groups_users();
     }
 }

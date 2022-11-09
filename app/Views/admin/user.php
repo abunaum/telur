@@ -5,6 +5,24 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
+<?php if (session()->getFlashdata('error')) : ?>
+    <script>
+        var err =
+            Swal.fire({
+                title: 'Ooops!',
+                html: 'Gagal menambah data user.<br>Silahkan coba lagi.',
+                icon: 'error',
+                timer: 3000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+                didOpen: () => {},
+                willClose: () => {}
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {}
+            })
+    </script>
+<?php endif; ?>
 <!-- Begin Page Content -->
 <div class="main-content">
     <div class="section__content section__content--p30">
@@ -24,18 +42,25 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
                         </div>
                         <form method="post" action="<?= base_url('admin/user/tambah'); ?>">
+                            <?= csrf_field() ?>
                             <div class="modal-body">
                                 <div class="col-md-12">
                                     <label for="nama" class="form-label">
                                         Nama
                                     </label>
-                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" required>
+                                    <input type="text" class="form-control <?= $validation->hasError('nama') ? 'is-invalid' : ''; ?>" id="nama" name="nama" placeholder="Nama" value="<?= old('nama'); ?>" required>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('nama'); ?>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="email" class="form-label">
                                         Email
                                     </label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="email@client.com" required>
+                                    <input type="email" class="form-control <?= $validation->hasError('email') ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="email@client.com" value="<?= old('email'); ?>" required>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('email'); ?>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="ug" class="form-label">
@@ -43,14 +68,20 @@
                                     </label>
                                     <div class="input-group" id="ug">
                                         <span class="input-group-text" id="usernameinput">@</span>
-                                        <input type="text" class="form-control" id="username" name="username" aria-describedby="usernameinput" placeholder="username" required>
+                                        <input type="text" class="form-control <?= $validation->hasError('username') ? 'is-invalid' : ''; ?>" id="username" name="username" aria-describedby="usernameinput" placeholder="username" value="<?= old('username'); ?>" required>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('username'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="password" class="form-label">
                                         Password
                                     </label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                    <input type="password" class="form-control <?= $validation->hasError('password') ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="Password" value="<?= old('password'); ?>" required>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('password'); ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">

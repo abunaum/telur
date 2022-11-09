@@ -28,6 +28,9 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 
+    <!-- Script -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <?= $this->renderSection('head'); ?>
 </head>
 
