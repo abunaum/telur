@@ -1,4 +1,4 @@
-<?= $this->extend('auth/template'); ?>
+<?= $this->extend('AuthTemplate/template'); ?>
 <?= $this->section('content'); ?>
 <div class="container">
     <div class="row justify-content-center">
