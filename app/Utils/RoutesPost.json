@@ -4,5 +4,11 @@
     "controller": "FunctionAdmin\\Post",
     "class": "tambah_user",
     "role": "admin"
+  },
+  {
+    "url": "/admin/bendahara/tambah",
+    "controller": "FunctionAdmin\\Post",
+    "class": "tambah_bendahara",
+    "role": "admin"
   }
 ]

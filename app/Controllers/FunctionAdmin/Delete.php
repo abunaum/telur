@@ -22,4 +22,16 @@ class Delete extends BaseController
         session()->setFlashdata('pesan', "Berhasil menghapus $email");
         return redirect()->to(base_url('/user'));
     }
+
+    public function bendahara($id = 0)
+    {
+        if ($id < 1) {
+            return redirect()->to(base_url());
+        }
+        $user = $this->User->where('id', $id)->first();
+        $email = $user['email'];
+        $this->User->delete($id);
+        session()->setFlashdata('pesan', "Berhasil menghapus $email");
+        return redirect()->to(base_url('/bendahara'));
+    }
 }

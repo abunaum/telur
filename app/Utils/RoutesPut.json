@@ -4,5 +4,11 @@
     "controller": "FunctionAdmin\\Put",
     "class": "user/$1",
     "role": "admin"
+  },
+  {
+    "url": "/admin/bendahara/(:num)",
+    "controller": "FunctionAdmin\\Put",
+    "class": "bendahara/$1",
+    "role": "admin"
   }
 ]

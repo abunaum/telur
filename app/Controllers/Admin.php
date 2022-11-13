@@ -54,10 +54,29 @@ class Admin extends BaseController
 
     public function bendahara()
     {
+        helper('group_helper');
+        $getuser = $this->MUser;
+        $getuser->select('id');
+        $getuser->select('email');
+        $getuser->select('username');
+        $getuser->select('fullname');
+        $alluser = $getuser->findAll();
+        $user = [];
+        foreach ($alluser as $usr) {
+            $u = $usr->toArray();
+            $group = $this->Group->where('user_id', $u['id'])->first();
+            $idgroup = $group['group_id'];
+            $getgroup = getgroup($idgroup);
+            if ($getgroup['name'] === 'bendahara') {
+                array_push($user, $u);
+            }
+        }
         $data = [
             'namaweb' => $this->namaweb,
-            'halaman' => "Bendahara"
+            'halaman' => "bendahara",
+            'user' => $user,
+            'validation' => \Config\Services::validation()
         ];
-        return view('admin/index', $data);
+        return view('admin/bendahara', $data);
     }
 }
