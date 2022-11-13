@@ -62,9 +62,7 @@
                             <button class="btn btn-primary w-100" type="submit">Login</button>
                         </div>
                     </form>
-
                     <?= view('Myth\Auth\Views\_message_block') ?>
-
                 </div>
             </div>
 

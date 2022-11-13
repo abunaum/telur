@@ -1,7 +1,8 @@
 [
   {
     "url": "/admin/user/tambah",
-    "controller": "Admin",
-    "class": "tambah_user"
+    "controller": "FunctionAdmin\\Post",
+    "class": "tambah_user",
+    "role": "admin"
   }
 ]

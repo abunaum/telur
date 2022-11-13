@@ -1,0 +1,8 @@
+[
+  {
+    "url": "/admin/user/(:num)",
+    "controller": "FunctionAdmin\\Put",
+    "class": "user/$1",
+    "role": "admin"
+  }
+]

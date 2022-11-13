@@ -1,0 +1,8 @@
+[
+  {
+    "url": "/admin/user/(:num)",
+    "controller": "FunctionAdmin\\Delete",
+    "class": "user/$1",
+    "role": "admin"
+  }
+]

@@ -59,6 +59,30 @@ foreach ($routpost as $rpost) {
     }
 }
 
+$rd = file_get_contents(APPPATH . "Utils/RoutesDelete.json");
+$routdelete = json_decode($rd, true);
+foreach ($routdelete as $rdelete) {
+    if (array_key_exists("role", $rdelete)) {
+        $role = $rdelete['role'];
+        $url = $rdelete["url"];
+        $routes->delete("$url", $rdelete["controller"] . "::" . $rdelete["class"], ['filter' => "role:$role"]);
+    } else {
+        $routes->delete($rdelete["url"], $rdelete["controller"] . "::" . $rdelete["class"]);
+    }
+}
+
+$rpu = file_get_contents(APPPATH . "Utils/RoutesPut.json");
+$routput = json_decode($rpu, true);
+foreach ($routput as $rput) {
+    if (array_key_exists("role", $rput)) {
+        $role = $rput['role'];
+        $url = $rput["url"];
+        $routes->put("$url", $rput["controller"] . "::" . $rput["class"], ['filter' => "role:$role"]);
+    } else {
+        $routes->put($rput["url"], $rput["controller"] . "::" . $rput["class"]);
+    }
+}
+
 
 /*
  * --------------------------------------------------------------------

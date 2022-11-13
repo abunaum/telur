@@ -23,6 +23,26 @@
             })
     </script>
 <?php endif; ?>
+
+<?php if (session()->getFlashdata('pesan')) : ?>
+    <script>
+        var pesan = '<?= session()->getFlashdata('pesan'); ?>';
+        var err =
+            Swal.fire({
+                title: 'Mantap',
+                html: pesan,
+                icon: 'success',
+                timer: 3000,
+                timerProgressBar: true,
+                showConfirmButton: false,
+                didOpen: () => {},
+                willClose: () => {}
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {}
+            })
+    </script>
+<?php endif; ?>
 <!-- Begin Page Content -->
 <div class="main-content">
     <div class="section__content section__content--p30">
@@ -98,7 +118,6 @@
                         <th>Nama</th>
                         <th>Username</th>
                         <th>Email</th>
-                        <th>Role</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -108,16 +127,23 @@
                             <td><?= $usr['fullname']; ?></td>
                             <td><?= $usr['username']; ?></td>
                             <td><?= $usr['email']; ?></td>
-                            <td><?= ucfirst($usr['group']['name']); ?></td>
                             <td>
-                                <button type="button" class="btn btn-warning">
-                                    <i class="ri-edit-circle-fill me-1"></i>
-                                    Edit
-                                </button>
-                                <button type="button" class="btn btn-danger">
-                                    <i class="ri-delete-bin-2-fill me-1"></i>
-                                    Hapus
-                                </button>
+                                <form class="d-inline" method="post" action="<?= base_url('admin/user') . "/" . $usr['id']; ?>">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="PUT" />
+                                    <button type="button" class="btn btn-warning reset-usr" data-email="<?= $usr['email']; ?>" data-username="<?= $usr['username']; ?>">
+                                        <i class="ri-edit-circle-fill me-1"></i>
+                                        Reset Password
+                                    </button>
+                                </form>
+                                <form class="d-inline" method="post" action="<?= base_url('admin/user') . "/" . $usr['id']; ?>">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <button type="button" class="btn btn-danger hps-usr" data-email="<?= $usr['email']; ?>">
+                                        <i class="ri-delete-bin-2-fill me-1"></i>
+                                        Hapus
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -137,5 +163,42 @@
     $(document).ready(function() {
         $('#user').DataTable();
     });
+
+    $(".hps-usr").on('click', function(e) {
+        var email = $(this).data('email');
+        Swal.fire({
+            title: 'Anda yakin?',
+            text: 'Mau menghapus ' + email + ' ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.form.submit();
+            }
+        })
+    })
+
+    $(".reset-usr").on('click', function(e) {
+        var email = $(this).data('email');
+        var username = $(this).data('username');
+        Swal.fire({
+            title: 'Anda yakin?',
+            text: 'Mau mereset password ' + email + ' menjadi "' + username + '" ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Reset',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.form.submit();
+            }
+        })
+    })
 </script>
 <?= $this->endSection(); ?>
