@@ -6,6 +6,12 @@
     "role": "admin"
   },
   {
+    "url": "/admin/produk/tambah",
+    "controller": "FunctionAdmin\\Post",
+    "class": "tambah_produk",
+    "role": "admin"
+  },
+  {
     "url": "/admin/bendahara/tambah",
     "controller": "FunctionAdmin\\Post",
     "class": "tambah_bendahara",

@@ -11,6 +11,18 @@ class Delete extends BaseController
         return "Cari apa bro?";
     }
 
+    public function produk($id = 0)
+    {
+        if ($id < 1) {
+            return redirect()->to(base_url());
+        }
+        $produk = $this->Produk->where('id', $id)->first();
+        $nama = $produk['nama'];
+        $this->Produk->delete($id);
+        session()->setFlashdata('pesan', "Berhasil menghapus $nama");
+        return redirect()->to(base_url('/produk'));
+    }
+
     public function user($id = 0)
     {
         if ($id < 1) {

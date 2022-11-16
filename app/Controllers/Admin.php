@@ -52,6 +52,18 @@ class Admin extends BaseController
         return view('admin/index', $data);
     }
 
+    public function produk()
+    {
+        $produk = $this->Produk->findAll();
+        $data = [
+            'namaweb' => $this->namaweb,
+            'halaman' => "Produk",
+            'produk' => $produk,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('admin/produk', $data);
+    }
+
     public function bendahara()
     {
         helper('group_helper');

@@ -22,14 +22,23 @@
   },
   {
     "div": true,
-    "text": "Transaksi",
+    "text": "Master Data",
+    "role": "admin"
+  },
+  {
+    "url": "/produk",
+    "controller": "Admin",
+    "class": "produk",
+    "name": "Produk",
+    "list": true,
+    "icon": "ri-star-line",
     "role": "admin"
   },
   {
     "url": "/transaksi",
     "controller": "Admin",
     "class": "transaksi",
-    "name": "List Transaksi",
+    "name": "Transaksi",
     "list": true,
     "icon": "ri-shopping-cart-2-line",
     "role": "admin"

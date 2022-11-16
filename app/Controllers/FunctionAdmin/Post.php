@@ -11,6 +11,45 @@ class Post extends BaseController
         return "Cari apa bro?";
     }
 
+    public function tambah_produk()
+    {
+        if (!$this->validate([
+            'nama' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Nama harus di isi',
+                ]
+            ],
+            'stok' => [
+                'rules'  => 'required|is_natural',
+                'errors' => [
+                    'required' => 'Stok harus di isi',
+                    'is_natural' => 'Stok tidak valid'
+                ]
+            ],
+            'harga' => [
+                'rules'  => 'required|is_natural',
+                'errors' => [
+                    'required' => 'Harga harus di isi',
+                    'is_natural' => 'Harga tidak valid'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('error', 'Gagal menambah produk');
+            return redirect()->to(base_url('/produk'))->withInput();
+        }
+        $data = [
+            "nama" => $this->request->getVar("nama"),
+            "stok" => (int)$this->request->getVar("stok"),
+            "harga" => (int)$this->request->getVar("harga"),
+        ];
+
+        $produk =  $this->Produk;
+        $produk->insert($data);
+        session()->setFlashdata('pesan', 'Berhasil menambah produk');
+        return redirect()->to(base_url('/produk'));
+    }
+
     public function tambah_user()
     {
         $nama = $this->request->getVar('nama');

@@ -1,5 +1,11 @@
 [
   {
+    "url": "/admin/produk/(:num)",
+    "controller": "FunctionAdmin\\Delete",
+    "class": "produk/$1",
+    "role": "admin"
+  },
+  {
     "url": "/admin/user/(:num)",
     "controller": "FunctionAdmin\\Delete",
     "class": "user/$1",
