@@ -166,8 +166,71 @@ class Put extends BaseController
                 }
                 break;
 
+            case 'notifikasi':
+                $tele_id = $this->request->getVar('tele_id');
+                $kode = RandomUC(6);
+                $tele = $this->Telegram->where('user_id', user()->id)->first();
+                $this->Telegram->save([
+                    'id' => $tele['id'],
+                    'tele_id' => $tele_id,
+                    'kode' => $kode
+                ]);
+                $send = kirimpesan($tele_id, "Kode verifikasi anda adalah $kode");
+                if ($send) {
+                    session()->setFlashdata('pesan', 'Kode verifikasi berhasil terkirim');
+                    return redirect()->to(previous_url());
+                } else {
+                    session()->setFlashdata('error', 'Gagal kirim kode verifikasi<br>pastikan sudah chat bot dan id sudah benar');
+                    return redirect()->to(previous_url());
+                }
+                break;
+
+            case 'reset-tele':
+                $tele = $this->Telegram->where('user_id', user()->id)->first();
+                $this->Telegram->save([
+                    'id' => $tele['id'],
+                    'tele_id' => "",
+                    'kode' => "",
+                    'status' => "invalid"
+                ]);
+                session()->setFlashdata('pesan', 'Id Telegram berhasil di reset');
+                return redirect()->to(previous_url());
+
+                break;
+
+            case 'verif-notifikasi':
+                $getkode = $this->request->getVar('kode');
+                if (!$this->validate([
+                    'kode' => [
+                        'rules'  => 'required',
+                        'errors' => [
+                            'required' => 'Kode harus di isi',
+                        ]
+                    ]
+                ])) {
+                    session()->setFlashdata('error', 'Validasi kode gagal');
+                    return redirect()->to(previous_url())->withInput();
+                }
+                $tele = $this->Telegram->where('user_id', user()->id)->first();
+                $kode = $tele['kode'];
+                if ($getkode !== $kode) {
+                    session()->setFlashdata('error', 'Validasi kode gagal, Kode tidak sama');
+                    return redirect()->to(previous_url());
+                }
+
+                $this->Telegram->save([
+                    'id' => $tele['id'],
+                    'kode' => "",
+                    'status' => "valid"
+                ]);
+                session()->setFlashdata('pesan', 'Notifikasi berhasil aktif');
+                return redirect()->to(previous_url());
+
+                break;
+
+
             default:
-                return redirect()->to(base_url('settting'));
+                return redirect()->to(base_url('setting'));
                 break;
         }
     }

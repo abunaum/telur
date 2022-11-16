@@ -14,7 +14,7 @@ class Telegram extends Migration
             'user_id'            => ['type' => 'int', 'constraint' => 11, 'unsigned' => true],
             'tele_id'            => ['type' => 'varchar', 'constraint' => 255],
             'kode'            => ['type' => 'varchar', 'constraint' => 255],
-            'status'            => ['type' => 'int', 'constraint' => 11, 'default' => 0],
+            'status'            => ['type' => 'varchar', 'constraint' => 255, 'default' => "invalid"],
             'created_at'       => ['type' => 'datetime', 'null' => true],
             'updated_at'       => ['type' => 'datetime', 'null' => true],
             'deleted_at'       => ['type' => 'datetime', 'null' => true],

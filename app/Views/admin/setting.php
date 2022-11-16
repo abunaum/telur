@@ -83,22 +83,28 @@
                                     Aktifkan Notifikasi
                                 </button>
                             </td>
-                        <?php elseif ($telegram['tele_id'] !== '' && $telegram['status'] === 0) : ?>
-                            <td>Belum diverifikasi</td>
+                        <?php elseif ($telegram['status'] === "invalid") : ?>
+                            <td>Belum diverifikasi (<?= $telegram['tele_id']; ?>)</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#verifNotifikasi">
                                     <i class="ri-notification-2-line me-1"></i>
-                                    Verifikasi Telegram Sekarang
+                                    Verifikasi
                                 </button>
+                                <form method="post" action="<?= base_url('admin/setting/reset-tele'); ?>" class="d-inline">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="PUT" />
+                                    <button type="submit" class="btn btn-primary">Reset Id Telegram</button>
+                                </form>
                             </td>
                             Belum diverifikasi
                         <?php else : ?>
-                            <td>Aktif</td>
+                            <td>Aktif (<?= $telegram['tele_id']; ?>)</td>
                             <td>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editNotifikasi">
-                                    <i class="ri-edit-box-line me-1"></i>
-                                    Edit Telegram
-                                </button>
+                                <form method="post" action="<?= base_url('admin/setting/reset-tele'); ?>">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="PUT" />
+                                    <button type="submit" class="btn btn-primary">Reset Id Telegram</button>
+                                </form>
                             </td>
                         <?php endif; ?>
                     </tr>
@@ -246,7 +252,69 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">Ubah password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="aktifkanNotifikasi" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Aktifkan Notifikasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
+            </div>
+            <form method="post" action="<?= base_url('admin/setting/notifikasi'); ?>">
+                <?= csrf_field() ?>
+                <input type="hidden" name="_method" value="PUT" />
+                <div class="modal-body">
+                    <p>Untuk mendapatkan Telegram ID silahkan chat <a href="https://t.me/LegiJayaFarm_bot" target="_blank" rel="noopener noreferrer">@LegiJayaFarm_bot</a></p>
+                    <div class="col-md-12">
+                        <label for="tele_id" class="form-label">
+                            ID Telegram
+                        </label>
+                        <input type="tele_id" class="form-control <?= $validation->hasError('tele_id') ? 'is-invalid' : ''; ?>" id="tele_id" name="tele_id" placeholder="Masukkan id telegram" value="<?= old('tele_id') ?? $telegram['tele_id'] ?>" required>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('tele_id'); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="verifNotifikasi" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Verifikasi Notifikasi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
+            </div>
+            <form method="post" action="<?= base_url('admin/setting/verif-notifikasi'); ?>">
+                <?= csrf_field() ?>
+                <input type="hidden" name="_method" value="PUT" />
+                <div class="modal-body">
+                    <p>ID Telegram anda adalah : <?= $telegram['tele_id'] ?? "undefined"; ?></p>
+                    <div class="col-md-12">
+                        <label for="kode" class="form-label">
+                            Kode Verifikasi
+                        </label>
+                        <input type="kode" class="form-control <?= $validation->hasError('kode') ? 'is-invalid' : ''; ?>" id="kode" name="kode" placeholder="Masukkan kode" value="<?= old('kode') ?>" required>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('kode'); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

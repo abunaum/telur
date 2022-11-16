@@ -49,7 +49,7 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
         $this->namaweb = "LEGI JAYA FARM";
-        helper(['auth', 'number']);
+        helper(['auth', 'number', 'telegram', 'random']);
         session();
 
         // Model
