@@ -1,20 +1,22 @@
 [
   {
-    "url": "/admin/user/tambah",
-    "controller": "FunctionAdmin\\Post",
-    "class": "tambah_user",
-    "role": "admin"
-  },
-  {
-    "url": "/admin/produk/tambah",
-    "controller": "FunctionAdmin\\Post",
-    "class": "tambah_produk",
-    "role": "admin"
-  },
-  {
-    "url": "/admin/bendahara/tambah",
-    "controller": "FunctionAdmin\\Post",
-    "class": "tambah_bendahara",
-    "role": "admin"
+    "role": "admin",
+    "data": [
+      {
+        "url": "/admin/user/tambah",
+        "controller": "FunctionAdmin\\Post",
+        "class": "tambah_user"
+      },
+      {
+        "url": "/admin/produk/tambah",
+        "controller": "FunctionAdmin\\Post",
+        "class": "tambah_produk"
+      },
+      {
+        "url": "/admin/bendahara/tambah",
+        "controller": "FunctionAdmin\\Post",
+        "class": "tambah_bendahara"
+      }
+    ]
   }
 ]

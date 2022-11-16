@@ -10,27 +10,23 @@
         $role = $getgroup['name'];
         $rg = file_get_contents(APPPATH . "Utils/RoutesGet.json");
         $rout = json_decode($rg, true);
-        foreach ($rout as $data) {
-            if (array_key_exists("div", $data)) {
-                if ($data['role'] === $role) {
         ?>
-                    <li class="nav-heading"><?= $data['text']; ?></li>
-                <?php
-                }
-            } else {
-                if ($data['list'] === true && $data['role'] === $role) {
-                ?>
-                    <li class="nav-item">
-                        <a class="nav-link " href="<?= $data['url']; ?>">
-                            <i class="<?= $data['icon']; ?>"></i>
-                            <span><?= $data['name']; ?></span>
-                        </a>
-                    </li>
-        <?php
-                }
-            }
-        }
-        ?>
+        <?php foreach ($rout as $r) : ?>
+            <?php if ($r['role'] === $role) : ?>
+                <?php foreach ($r['data'] as $data) : ?>
+                    <?php if (array_key_exists("div", $data)) : ?>
+                        <li class="nav-heading"><?= $data['text']; ?></li>
+                    <?php elseif ($data['list'] === true) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link " href="<?= $data['url']; ?>">
+                                <i class="<?= $data['icon']; ?>"></i>
+                                <span><?= $data['name']; ?></span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </ul>
 
 </aside><!-- End Sidebar-->

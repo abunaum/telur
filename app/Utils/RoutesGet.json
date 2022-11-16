@@ -1,97 +1,116 @@
 [
   {
-    "url": "/login",
-    "controller": "Auth",
-    "class": "index",
-    "list": false
+    "role": "norole",
+    "data": [
+      {
+        "url": "/login",
+        "controller": "Auth",
+        "class": "index",
+        "list": false
+      },
+      {
+        "url": "/",
+        "controller": "Auth",
+        "class": "cekrole",
+        "list": false
+      },
+      {
+        "url": "/setting",
+        "controller": "Auth",
+        "class": "setting",
+        "list": false
+      }
+    ]
   },
   {
-    "url": "/",
-    "controller": "Auth",
-    "class": "cekrole",
-    "list": false
+    "role": "admin",
+    "data": [
+      {
+        "url": "/admin-dashboard",
+        "controller": "Admin",
+        "class": "index",
+        "name": "Dashboard",
+        "list": true,
+        "icon": "ri-home-2-line"
+      },
+      {
+        "url": "/admin-setting",
+        "controller": "Admin",
+        "class": "setting",
+        "list": false,
+        "icon": "ri-home-2-line"
+      },
+      {
+        "div": true,
+        "text": "Master Data"
+      },
+      {
+        "url": "/produk",
+        "controller": "Admin",
+        "class": "produk",
+        "name": "Produk",
+        "list": true,
+        "icon": "ri-star-line"
+      },
+      {
+        "url": "/transaksi",
+        "controller": "Admin",
+        "class": "transaksi",
+        "name": "Transaksi",
+        "list": true,
+        "icon": "ri-shopping-cart-2-line"
+      },
+      {
+        "div": true,
+        "text": "Bendahara",
+        "role": "admin"
+      },
+      {
+        "url": "/bendahara",
+        "controller": "Admin",
+        "class": "bendahara",
+        "name": "List Bendahara",
+        "list": true,
+        "icon": "ri-money-dollar-circle-line"
+      },
+      {
+        "div": true,
+        "text": "User"
+      },
+      {
+        "url": "/user",
+        "controller": "Admin",
+        "class": "user",
+        "name": "List User",
+        "list": true,
+        "icon": "ri-account-circle-line"
+      }
+    ]
   },
   {
-    "url": "/setting",
-    "controller": "Auth",
-    "class": "setting",
-    "list": false
+    "role": "bendahara",
+    "data": [
+      {
+        "url": "/bendahara-dashboard",
+        "controller": "Admin",
+        "class": "index",
+        "name": "Dashboard",
+        "list": true,
+        "icon": "ri-home-2-line"
+      }
+    ]
   },
   {
-    "url": "/admin-dashboard",
-    "controller": "Admin",
-    "class": "index",
-    "name": "Dashboard",
-    "list": true,
-    "icon": "ri-home-2-line",
-    "role": "admin"
-  },
-  {
-    "url": "/admin-setting",
-    "controller": "Admin",
-    "class": "setting",
-    "list": false,
-    "icon": "ri-home-2-line",
-    "role": "admin"
-  },
-  {
-    "div": true,
-    "text": "Master Data",
-    "role": "admin"
-  },
-  {
-    "url": "/produk",
-    "controller": "Admin",
-    "class": "produk",
-    "name": "Produk",
-    "list": true,
-    "icon": "ri-star-line",
-    "role": "admin"
-  },
-  {
-    "url": "/transaksi",
-    "controller": "Admin",
-    "class": "transaksi",
-    "name": "Transaksi",
-    "list": true,
-    "icon": "ri-shopping-cart-2-line",
-    "role": "admin"
-  },
-  {
-    "div": true,
-    "text": "Bendahara",
-    "role": "admin"
-  },
-  {
-    "url": "/bendahara",
-    "controller": "Admin",
-    "class": "bendahara",
-    "name": "List Bendahara",
-    "list": true,
-    "icon": "ri-money-dollar-circle-line",
-    "role": "admin"
-  },
-  {
-    "div": true,
-    "text": "User",
-    "role": "admin"
-  },
-  {
-    "url": "/user",
-    "controller": "Admin",
-    "class": "user",
-    "name": "List User",
-    "list": true,
-    "icon": "ri-account-circle-line",
-    "role": "admin"
-  },
-  {
-    "url": "/bendahara-dashboard",
-    "controller": "Admin",
-    "class": "user",
-    "name": "Dashboard",
-    "list": true,
-    "icon": "ri-home-2-line",
-    "role": "bendahara"
+    "role": "user",
+    "data": [
+      {
+        "url": "/user-dashboard",
+        "controller": "Admin",
+        "class": "index",
+        "name": "Dashboard",
+        "list": true,
+        "icon": "ri-home-2-line"
+      }
+    ]
   }
 ]

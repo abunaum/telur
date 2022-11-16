@@ -35,51 +35,89 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
 $rg = file_get_contents(APPPATH . "Utils/RoutesGet.json");
 $routget = json_decode($rg, true);
 foreach ($routget as $rget) {
-    if (!array_key_exists("div", $rget)) {
-        if (array_key_exists("role", $rget)) {
-            $role = $rget['role'];
-            $routes->get($rget["url"], $rget["controller"] . "::" . $rget["class"], ['filter' => "role:$role"]);
-        } else {
-            $routes->get($rget["url"], $rget["controller"] . "::" . $rget["class"]);
-        }
+    $role = $rget['role'];
+    switch ($role) {
+        case 'norole':
+            foreach ($rget['data'] as $data) {
+                $routes->get($data["url"], $data["controller"] . "::" . $data["class"]);
+            }
+            break;
+
+        default:
+            foreach ($rget['data'] as $data) {
+                if (!array_key_exists("div", $data)) {
+                    $routes->get($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
+                }
+            }
+            break;
     }
 }
 
 $rp = file_get_contents(APPPATH . "Utils/RoutesPost.json");
 $routpost = json_decode($rp, true);
 foreach ($routpost as $rpost) {
-    if (array_key_exists("role", $rpost)) {
-        $role = $rpost['role'];
-        $routes->post($rpost["url"], $rpost["controller"] . "::" . $rpost["class"], ['filter' => "role:$role"]);
-    } else {
-        $routes->post($rpost["url"], $rpost["controller"] . "::" . $rpost["class"]);
+    $role = $rpost['role'];
+    switch ($role) {
+        case 'norole':
+            foreach ($rpost['data'] as $data) {
+                $routes->post($data["url"], $data["controller"] . "::" . $data["class"]);
+            }
+            break;
+
+        default:
+            foreach ($rpost['data'] as $data) {
+                if (!array_key_exists("div", $data)) {
+                    $routes->post($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
+                }
+            }
+            break;
     }
 }
+
 
 $rd = file_get_contents(APPPATH . "Utils/RoutesDelete.json");
 $routdelete = json_decode($rd, true);
 foreach ($routdelete as $rdelete) {
-    if (array_key_exists("role", $rdelete)) {
-        $role = $rdelete['role'];
-        $url = $rdelete["url"];
-        $routes->delete("$url", $rdelete["controller"] . "::" . $rdelete["class"], ['filter' => "role:$role"]);
-    } else {
-        $routes->delete($rdelete["url"], $rdelete["controller"] . "::" . $rdelete["class"]);
+    $role = $rdelete['role'];
+    switch ($role) {
+        case 'norole':
+            foreach ($rdelete['data'] as $data) {
+                $routes->delete($data["url"], $data["controller"] . "::" . $data["class"]);
+            }
+            break;
+
+        default:
+            foreach ($rdelete['data'] as $data) {
+                if (!array_key_exists("div", $data)) {
+                    $routes->delete($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
+                }
+            }
+            break;
     }
 }
 
 $rpu = file_get_contents(APPPATH . "Utils/RoutesPut.json");
 $routput = json_decode($rpu, true);
 foreach ($routput as $rput) {
-    if (array_key_exists("role", $rput)) {
-        $role = $rput['role'];
-        $url = $rput["url"];
-        $routes->put("$url", $rput["controller"] . "::" . $rput["class"], ['filter' => "role:$role"]);
-    } else {
-        $routes->put($rput["url"], $rput["controller"] . "::" . $rput["class"]);
+    $role = $rput['role'];
+    switch ($role) {
+        case 'norole':
+            foreach ($rput['data'] as $data) {
+                $routes->put($data["url"], $data["controller"] . "::" . $data["class"]);
+            }
+            break;
+
+        default:
+            foreach ($rput['data'] as $data) {
+                if (!array_key_exists("div", $data)) {
+                    $routes->put($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
+                }
+            }
+            break;
     }
 }
 

@@ -1,20 +1,22 @@
 [
   {
-    "url": "/admin/user/(:num)",
-    "controller": "FunctionAdmin\\Put",
-    "class": "user/$1",
-    "role": "admin"
-  },
-  {
-    "url": "/admin/bendahara/(:num)",
-    "controller": "FunctionAdmin\\Put",
-    "class": "bendahara/$1",
-    "role": "admin"
-  },
-  {
-    "url": "/admin/setting/(:any)",
-    "controller": "FunctionAdmin\\Put",
-    "class": "setting/$1",
-    "role": "admin"
+    "role": "admin",
+    "data": [
+      {
+        "url": "/admin/user/(:num)",
+        "controller": "FunctionAdmin\\Put",
+        "class": "user/$1"
+      },
+      {
+        "url": "/admin/bendahara/(:num)",
+        "controller": "FunctionAdmin\\Put",
+        "class": "bendahara/$1"
+      },
+      {
+        "url": "/admin/setting/(:any)",
+        "controller": "FunctionAdmin\\Put",
+        "class": "setting/$1"
+      }
+    ]
   }
 ]

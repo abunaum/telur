@@ -1,20 +1,22 @@
 [
   {
-    "url": "/admin/produk/(:num)",
-    "controller": "FunctionAdmin\\Delete",
-    "class": "produk/$1",
-    "role": "admin"
-  },
-  {
-    "url": "/admin/user/(:num)",
-    "controller": "FunctionAdmin\\Delete",
-    "class": "user/$1",
-    "role": "admin"
-  },
-  {
-    "url": "/admin/bendahara/(:num)",
-    "controller": "FunctionAdmin\\Delete",
-    "class": "bendahara/$1",
-    "role": "admin"
+    "role": "admin",
+    "data": [
+      {
+        "url": "/admin/produk/(:num)",
+        "controller": "FunctionAdmin\\Delete",
+        "class": "produk/$1"
+      },
+      {
+        "url": "/admin/user/(:num)",
+        "controller": "FunctionAdmin\\Delete",
+        "class": "user/$1"
+      },
+      {
+        "url": "/admin/bendahara/(:num)",
+        "controller": "FunctionAdmin\\Delete",
+        "class": "bendahara/$1"
+      }
+    ]
   }
 ]
