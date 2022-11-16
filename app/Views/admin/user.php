@@ -7,40 +7,39 @@
 <?= $this->section('content'); ?>
 <?php if (session()->getFlashdata('error')) : ?>
     <script>
-        var err =
-            Swal.fire({
-                title: 'Ooops!',
-                html: 'Gagal menambah data user.<br>Silahkan coba lagi.',
-                icon: 'error',
-                timer: 3000,
-                timerProgressBar: true,
-                showConfirmButton: false,
-                didOpen: () => {},
-                willClose: () => {}
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {}
-            })
+        var err = '<?= session()->getFlashdata('error'); ?>';
+        Swal.fire({
+            title: 'Ooops!',
+            html: err,
+            icon: 'error',
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {},
+            willClose: () => {}
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {}
+        })
     </script>
 <?php endif; ?>
 
 <?php if (session()->getFlashdata('pesan')) : ?>
     <script>
         var pesan = '<?= session()->getFlashdata('pesan'); ?>';
-        var err =
-            Swal.fire({
-                title: 'Mantap',
-                html: pesan,
-                icon: 'success',
-                timer: 3000,
-                timerProgressBar: true,
-                showConfirmButton: false,
-                didOpen: () => {},
-                willClose: () => {}
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {}
-            })
+        Swal.fire({
+            title: 'Mantap',
+            html: pesan,
+            icon: 'success',
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {},
+            willClose: () => {}
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {}
+        })
     </script>
 <?php endif; ?>
 <!-- Begin Page Content -->

@@ -10,5 +10,11 @@
     "controller": "FunctionAdmin\\Put",
     "class": "bendahara/$1",
     "role": "admin"
+  },
+  {
+    "url": "/admin/setting/(:any)",
+    "controller": "FunctionAdmin\\Put",
+    "class": "setting/$1",
+    "role": "admin"
   }
 ]

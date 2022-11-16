@@ -109,6 +109,11 @@ class Post extends BaseController
             "user_id" => $iduser
         ]);
 
+        $telegram =  $this->Telegram;
+        $telegram->insert([
+            "user_id" => $iduser
+        ]);
+
         session()->setFlashdata('pesan', 'Berhasil menambah user');
         return redirect()->to(base_url('/user'));
     }
@@ -169,6 +174,11 @@ class Post extends BaseController
         $group =  $this->Group;
         $group->insert([
             "group_id" => 2,
+            "user_id" => $iduser
+        ]);
+
+        $telegram =  $this->Telegram;
+        $telegram->insert([
             "user_id" => $iduser
         ]);
 

@@ -57,5 +57,6 @@ abstract class BaseController extends Controller
         $this->User = new \App\Models\User();
         $this->Group = new \App\Models\Auth_groups_users();
         $this->Produk = new \App\Models\Produk();
+        $this->Telegram = new \App\Models\Telegram();
     }
 }

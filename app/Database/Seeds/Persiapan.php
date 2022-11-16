@@ -61,5 +61,15 @@ class Persiapan extends Seeder
             ]
         ];
         $this->db->table('auth_groups_users')->insertBatch($data_auth_groups_users);
+
+        $data_telegram = [
+            [
+                'user_id'    => 1,
+            ],
+            [
+                'user_id'    => 2
+            ]
+        ];
+        $this->db->table('telegram')->insertBatch($data_telegram);
     }
 }

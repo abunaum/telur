@@ -45,4 +45,29 @@ class Auth extends BaseController
             }
         }
     }
+
+    public function setting()
+    {
+        helper('group_helper');
+        if (!user()) {
+            return redirect()->to(base_url('login'));
+        } else {
+            $group = $this->Group->where('user_id', user()->id)->first();
+            $idgroup = $group['group_id'];
+            $getgroup = getgroup($idgroup);
+            $groupname = $getgroup['name'];
+            switch ($groupname) {
+                case 'admin':
+                    return redirect()->to(base_url('admin-setting'));
+                    break;
+                case 'bendahara':
+                    return redirect()->to(base_url('bendahara-setting'));
+                    break;
+
+                default:
+                    return redirect()->to(base_url('user-setting'));
+                    break;
+            }
+        }
+    }
 }

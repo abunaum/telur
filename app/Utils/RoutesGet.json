@@ -12,11 +12,25 @@
     "list": false
   },
   {
+    "url": "/setting",
+    "controller": "Auth",
+    "class": "setting",
+    "list": false
+  },
+  {
     "url": "/admin-dashboard",
     "controller": "Admin",
     "class": "index",
     "name": "Dashboard",
     "list": true,
+    "icon": "ri-home-2-line",
+    "role": "admin"
+  },
+  {
+    "url": "/admin-setting",
+    "controller": "Admin",
+    "class": "setting",
+    "list": false,
     "icon": "ri-home-2-line",
     "role": "admin"
   },

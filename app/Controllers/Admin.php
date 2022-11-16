@@ -85,10 +85,24 @@ class Admin extends BaseController
         }
         $data = [
             'namaweb' => $this->namaweb,
-            'halaman' => "bendahara",
+            'halaman' => "Bendahara",
             'user' => $user,
             'validation' => \Config\Services::validation()
         ];
         return view('admin/bendahara', $data);
+    }
+
+    public function setting()
+    {
+        $user = $this->MUser->where('id', user()->id)->first();
+        $telegram = $this->Telegram->where('user_id', user()->id)->first();
+        $data = [
+            'namaweb' => $this->namaweb,
+            'halaman' => "Setting",
+            'user' => $user,
+            'telegram' => $telegram,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('admin/setting', $data);
     }
 }
