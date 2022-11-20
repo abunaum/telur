@@ -4,34 +4,54 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
 # Change Log
 
-## V 22.11.20.1
+---
 
-Edit FunctionAdmin [Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php).
--> Add Minimal Order
+### V 22.11.20.1
 
-Add FunctionBendahara [Put.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionBendahara/Put.php).
--> Add Setting Bendahara
+- Edit FunctionAdmin [Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php)
 
-Add FunctionUser [Put.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionUser/Put.php).
--> Add Setting User
+  -> Add Minimal Order
 
-Add Bendahara Controller [Bendahara.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/Bendahara.php).
--> Add Bendahara Controller
+- Add FunctionBendahara [Put.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionBendahara/Put.php)
 
-Add User Controller [User.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/User.php).
--> Add User Controller
+  -> Add Setting Bendahara
 
-Edit Migration [2022-11-16-035248_Data.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Database/Migrations/2022-11-16-035248_Data.php).
--> Add minorder Field
+- Add FunctionBendahara [Put.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionBendahara/Put.php).
 
-Edit RoutesGet [RoutesGet.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/RoutesGet.json).
--> Add bendahara setting
--> Add user setting
+  -> Add Setting Bendahara
 
-Edit RoutesPut [RoutesPut.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/RoutesPut.json).
--> Add bendahara setting
--> Add user setting
+- Add FunctionUser [Put.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionUser/Put.php).
 
-Edit [Views](https://gitlab.com/abunaum/telur/-/blob/main/app/Views).
--> Add bendahara setting
--> move app/Views/admin/setting.php to app/Views/setting.php
+  -> Add Setting User
+
+- Add Bendahara Controller [Bendahara.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/Bendahara.php).
+
+  -> Add Bendahara Controller
+
+- Add User Controller [User.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/User.php).
+
+  -> Add User Controller
+
+- Edit Migration [2022-11-16-035248_Data.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Database/Migrations/2022-11-16-035248_Data.php).
+
+  -> Add minorder Field
+
+- Edit RoutesGet [RoutesGet.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/RoutesGet.json).
+
+  -> Add bendahara setting
+
+  -> Add user setting
+
+- Edit RoutesPut [RoutesPut.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/RoutesPut.json).
+
+  -> Add bendahara setting
+
+  -> Add user setting
+
+- Edit [Views](https://gitlab.com/abunaum/telur/-/blob/main/app/Views).
+
+  -> Add bendahara setting
+
+  -> move app/Views/admin/setting.php to app/Views/setting.php
+
+---
