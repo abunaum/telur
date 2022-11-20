@@ -2,7 +2,19 @@
 
 Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
-# Change Log
+---
+
+## Bash Commands
+
+| Function   | Command                       |
+| ---------- | ----------------------------- |
+| Migration  | `php spark migrate -all`      |
+| Seeder     | `php spark db:seed Persiapan` |
+| Run Server | `php spark serve`             |
+
+---
+
+# Change Log :
 
 ---
 
