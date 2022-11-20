@@ -73,12 +73,15 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="stok" class="form-label">
+                                    <label for="st" class="form-label">
                                         Stok
                                     </label>
-                                    <input type="number" class="form-control <?= $validation->hasError('stok') ? 'is-invalid' : ''; ?>" id="stok" name="stok" placeholder="Stok" value="<?= old('stok'); ?>" required>
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('stok'); ?>
+                                    <div class="input-group" id="st">
+                                        <input type="number" class="form-control <?= $validation->hasError('stok') ? 'is-invalid' : ''; ?>" id="stok" name="stok" aria-describedby="stokinput" placeholder="Stok" value="<?= old('stok'); ?>" required>
+                                        <span class="input-group-text" id="stokinput">Kg</span>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('stok'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -88,8 +91,21 @@
                                     <div class="input-group" id="hg">
                                         <span class="input-group-text" id="hargainput">Rp.</span>
                                         <input type="text" class="form-control <?= $validation->hasError('harga') ? 'is-invalid' : ''; ?>" id="harga" name="harga" aria-describedby="hargainput" placeholder="harga" value="<?= old('harga'); ?>" required>
+                                        <span class="input-group-text" id="hargainput"> / Kg</span>
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('harga'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="hg" class="form-label">
+                                        Minimal Order
+                                    </label>
+                                    <div class="input-group" id="hg">
+                                        <input type="number" class="form-control <?= $validation->hasError('minorder') ? 'is-invalid' : ''; ?>" id="minorder" name="minorder" aria-describedby="minorderinput" placeholder="1" value="<?= old('minorder'); ?>" required>
+                                        <span class="input-group-text" id="minorderinput"> Kg</span>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('minorder'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -108,6 +124,7 @@
                         <th>Nama</th>
                         <th>Stok</th>
                         <th>Harga</th>
+                        <th>Min Order</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -115,8 +132,9 @@
                     <?php foreach ($produk as $prd) : ?>
                         <tr>
                             <td><?= $prd['nama']; ?></td>
-                            <td><?= $prd['stok']; ?></td>
+                            <td><?= $prd['stok']; ?> Kg</td>
                             <td><?= number_to_currency($prd['harga'], 'IDR', 'id_ID'); ?></td>
+                            <td>10</td>
                             <td>
                                 <form class="d-inline" method="post" action="<?= base_url('admin/produk') . "/" . $prd['id']; ?>">
                                     <?= csrf_field() ?>

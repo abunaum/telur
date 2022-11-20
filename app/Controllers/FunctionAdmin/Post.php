@@ -34,6 +34,13 @@ class Post extends BaseController
                     'is_natural' => 'Harga tidak valid'
                 ]
             ],
+            'minorder' => [
+                'rules'  => 'required|is_natural',
+                'errors' => [
+                    'required' => 'Minimal order harus di isi',
+                    'is_natural' => 'Minimal order tidak valid'
+                ]
+            ],
         ])) {
             session()->setFlashdata('error', 'Gagal menambah produk');
             return redirect()->to(base_url('/produk'))->withInput();
@@ -42,6 +49,7 @@ class Post extends BaseController
             "nama" => $this->request->getVar("nama"),
             "stok" => (int)$this->request->getVar("stok"),
             "harga" => (int)$this->request->getVar("harga"),
+            "minorder" => (int)$this->request->getVar("minorder"),
         ];
 
         $produk =  $this->Produk;

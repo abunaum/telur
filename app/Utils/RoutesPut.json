@@ -18,5 +18,25 @@
         "class": "setting/$1"
       }
     ]
+  },
+  {
+    "role": "bendahara",
+    "data": [
+      {
+        "url": "/bendahara/setting/(:any)",
+        "controller": "FunctionBendahara\\Put",
+        "class": "setting/$1"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "data": [
+      {
+        "url": "/user/setting/(:any)",
+        "controller": "FunctionUser\\Put",
+        "class": "setting/$1"
+      }
+    ]
   }
 ]

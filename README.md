@@ -1,63 +1,37 @@
-# CodeIgniter 4 Application Starter
+# Legi Jaya Farm
 
-## What is CodeIgniter?
+Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+# Change Log
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## V 22.11.20.1
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+Edit FunctionAdmin [Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php).
+-> Add Minimal Order
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+Add FunctionBendahara [Put.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionBendahara/Put.php).
+-> Add Setting Bendahara
 
-## Installation & updates
+Add FunctionUser [Put.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionUser/Put.php).
+-> Add Setting User
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+Add Bendahara Controller [Bendahara.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/Bendahara.php).
+-> Add Bendahara Controller
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Add User Controller [User.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/User.php).
+-> Add User Controller
 
-## Setup
+Edit Migration [2022-11-16-035248_Data.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Database/Migrations/2022-11-16-035248_Data.php).
+-> Add minorder Field
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+Edit RoutesGet [RoutesGet.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/RoutesGet.json).
+-> Add bendahara setting
+-> Add user setting
 
-## Important Change with index.php
+Edit RoutesPut [RoutesPut.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/RoutesPut.json).
+-> Add bendahara setting
+-> Add user setting
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+Edit [Views](https://gitlab.com/abunaum/telur/-/blob/main/app/Views).
+-> Add bendahara setting
+-> move app/Views/admin/setting.php to app/Views/setting.php

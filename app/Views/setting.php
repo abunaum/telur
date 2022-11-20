@@ -90,7 +90,7 @@
                                     <i class="ri-notification-2-line me-1"></i>
                                     Verifikasi
                                 </button>
-                                <form method="post" action="<?= base_url('admin/setting/reset-tele'); ?>" class="d-inline">
+                                <form method="post" action="<?= base_url($group . '/setting/reset-tele'); ?>" class="d-inline">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="PUT" />
                                     <button type="submit" class="btn btn-primary">Reset Id Telegram</button>
@@ -100,7 +100,7 @@
                         <?php else : ?>
                             <td>Aktif (<?= $telegram['tele_id']; ?>)</td>
                             <td>
-                                <form method="post" action="<?= base_url('admin/setting/reset-tele'); ?>">
+                                <form method="post" action="<?= base_url($group . '/setting/reset-tele'); ?>">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="PUT" />
                                     <button type="submit" class="btn btn-primary">Reset Id Telegram</button>
@@ -125,7 +125,7 @@
                 <h5 class="modal-title">Edit Nama</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
             </div>
-            <form method="post" action="<?= base_url('admin/setting/nama'); ?>">
+            <form method="post" action="<?= base_url($group . '/setting/nama'); ?>">
                 <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="PUT" />
                 <div class="modal-body">
@@ -155,7 +155,7 @@
                 <h5 class="modal-title">Edit Email</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
             </div>
-            <form method="post" action="<?= base_url('admin/setting/email'); ?>">
+            <form method="post" action="<?= base_url($group . '/setting/email'); ?>">
                 <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="PUT" />
                 <div class="modal-body">
@@ -185,7 +185,7 @@
                 <h5 class="modal-title">Edit Username</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
             </div>
-            <form method="post" action="<?= base_url('admin/setting/username'); ?>">
+            <form method="post" action="<?= base_url($group . '/setting/username'); ?>">
                 <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="PUT" />
                 <div class="modal-body">
@@ -218,7 +218,7 @@
                 <h5 class="modal-title">Ubah Password</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
             </div>
-            <form method="post" action="<?= base_url('admin/setting/password'); ?>">
+            <form method="post" action="<?= base_url($group . '/setting/password'); ?>">
                 <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="PUT" />
                 <div class="modal-body">
@@ -266,7 +266,7 @@
                 <h5 class="modal-title">Aktifkan Notifikasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
             </div>
-            <form method="post" action="<?= base_url('admin/setting/notifikasi'); ?>">
+            <form method="post" action="<?= base_url($group . '/setting/notifikasi'); ?>">
                 <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="PUT" />
                 <div class="modal-body">
@@ -297,7 +297,7 @@
                 <h5 class="modal-title">Verifikasi Notifikasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
             </div>
-            <form method="post" action="<?= base_url('admin/setting/verif-notifikasi'); ?>">
+            <form method="post" action="<?= base_url($group . '/setting/verif-notifikasi'); ?>">
                 <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="PUT" />
                 <div class="modal-body">

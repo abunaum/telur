@@ -37,8 +37,7 @@
         "url": "/admin-setting",
         "controller": "Admin",
         "class": "setting",
-        "list": false,
-        "icon": "ri-home-2-line"
+        "list": false
       },
       {
         "div": true,
@@ -97,6 +96,12 @@
         "name": "Dashboard",
         "list": true,
         "icon": "ri-home-2-line"
+      },
+      {
+        "url": "/bendahara-setting",
+        "controller": "Bendahara",
+        "class": "setting",
+        "list": false
       }
     ]
   },
@@ -110,6 +115,12 @@
         "name": "Dashboard",
         "list": true,
         "icon": "ri-home-2-line"
+      },
+      {
+        "url": "/user-setting",
+        "controller": "User",
+        "class": "setting",
+        "list": false
       }
     ]
   }
