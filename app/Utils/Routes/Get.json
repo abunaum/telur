@@ -91,7 +91,7 @@
     "data": [
       {
         "url": "/bendahara-dashboard",
-        "controller": "Admin",
+        "controller": "Bendahara",
         "class": "index",
         "name": "Dashboard",
         "list": true,
@@ -110,7 +110,7 @@
     "data": [
       {
         "url": "/user-dashboard",
-        "controller": "Admin",
+        "controller": "User",
         "class": "index",
         "name": "Dashboard",
         "list": true,

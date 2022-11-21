@@ -12,7 +12,7 @@ class Admin extends BaseController
             'namaweb' => $this->namaweb,
             'halaman' => "Dashboard"
         ];
-        return view('admin/index', $data);
+        return view('dashboard', $data);
     }
 
     public function user()

@@ -8,7 +8,7 @@
         $idgroup = $group['group_id'];
         $getgroup = getgroup($idgroup);
         $role = $getgroup['name'];
-        $rg = file_get_contents(APPPATH . "Utils/RoutesGet.json");
+        $rg = file_get_contents(APPPATH . "Utils/Routes/Get.json");
         $rout = json_decode($rg, true);
         ?>
         <?php foreach ($rout as $r) : ?>

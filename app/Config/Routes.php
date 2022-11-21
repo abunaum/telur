@@ -36,7 +36,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$rg = file_get_contents(APPPATH . "Utils/RoutesGet.json");
+$rg = file_get_contents(APPPATH . "Utils/Routes/Get.json");
 $routget = json_decode($rg, true);
 foreach ($routget as $rget) {
     $role = $rget['role'];
@@ -57,7 +57,7 @@ foreach ($routget as $rget) {
     }
 }
 
-$rp = file_get_contents(APPPATH . "Utils/RoutesPost.json");
+$rp = file_get_contents(APPPATH . "Utils/Routes/Post.json");
 $routpost = json_decode($rp, true);
 foreach ($routpost as $rpost) {
     $role = $rpost['role'];
@@ -79,7 +79,7 @@ foreach ($routpost as $rpost) {
 }
 
 
-$rd = file_get_contents(APPPATH . "Utils/RoutesDelete.json");
+$rd = file_get_contents(APPPATH . "Utils/Routes/Delete.json");
 $routdelete = json_decode($rd, true);
 foreach ($routdelete as $rdelete) {
     $role = $rdelete['role'];
@@ -100,7 +100,7 @@ foreach ($routdelete as $rdelete) {
     }
 }
 
-$rpu = file_get_contents(APPPATH . "Utils/RoutesPut.json");
+$rpu = file_get_contents(APPPATH . "Utils/Routes/Put.json");
 $routput = json_decode($rpu, true);
 foreach ($routput as $rput) {
     $role = $rput['role'];

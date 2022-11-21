@@ -8,7 +8,11 @@ class User extends BaseController
 {
     public function index()
     {
-        return "cari apa bos ?";
+        $data = [
+            'namaweb' => $this->namaweb,
+            'halaman' => "Dashboard"
+        ];
+        return view('dashboard', $data);
     }
 
     public function setting()

@@ -35,6 +35,26 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
 ---
 
+### V 22.11.21.1
+
+- Edit [Routes](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/Routes) location
+
+  -> Move and rename Routes from Utils/'RoutesName'.json to Utils/Routes/'Name'.json
+
+- Edit [Routes.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Config/Roures.php)
+
+  -> Modify Routes directory files
+
+- Modify dashboard views file for all rules [dashboard.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Views/dashboard)
+
+  -> Controller [Admin](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/Admin.php)
+
+  -> Controller [Bendahara](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/Bendahara.php)
+
+  -> Controller [User](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/Admin.php)
+
+---
+
 ### V 22.11.20.1
 
 - Edit FunctionAdmin [Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php)
