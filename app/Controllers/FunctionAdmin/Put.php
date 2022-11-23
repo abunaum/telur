@@ -234,4 +234,133 @@ class Put extends BaseController
                 break;
         }
     }
+
+    public function produk($id = 0, $type = 'gak ada')
+    {
+        if ($id < 1) {
+            session()->setFlashdata('error', 'Id produk tidak valid');
+            return redirect()->to(previous_url());
+        }
+
+        $produk = $this->Produk->where('id', $id)->first();
+        if (!$produk) {
+            session()->setFlashdata('error', 'Id produk tidak ditemukan');
+            return redirect()->to(previous_url());
+        }
+
+        $oldname = $produk['nama'];
+        $oldstok = $produk['stok'];
+        $oldharga = number_to_currency($produk['harga'], 'IDR', 'id_ID', 0);
+        $oldminorder = $produk['minorder'];
+        switch ($type) {
+            case 'nama':
+                $nama = $this->request->getVar('nama');
+                if (!$this->validate([
+                    'nama' => [
+                        'rules'  => 'required',
+                        'errors' => [
+                            'required' => 'Nama harus di isi',
+                        ]
+                    ]
+                ])) {
+                    session()->setFlashdata('error', 'Nama harus di isi');
+                    return redirect()->to(previous_url())->withInput();
+                }
+                $this->Produk->save([
+                    'id' => $id,
+                    'nama' => $nama
+                ]);
+                session()->setFlashdata('pesan', "Nama produk $oldname berhasil diubah menjadi $nama");
+                $pesan = "Ada perubahan nama produk nih \nNama Produk : '$oldname' menjadi '$nama' \nHarga : $oldharga @Kg \nStok : $oldstok Kg \nMinimal Order : $oldminorder Kg \n \nTunggu apalagi?, Yuk buruan di order sebelum kehabisan :)";
+                kirim_user($pesan);
+                $pesanb = "Admin merubah nama pruduk \nNama Produk : '$oldname' menjadi '$nama' \nHarga : $oldharga @Kg \nStok : $oldstok Kg \nMinimal Order : $oldminorder Kg";
+                kirim_bendahara($pesanb);
+                return redirect()->to(previous_url())->withInput();
+                break;
+
+            case 'minorder':
+                $minorder = $this->request->getVar('minorder');
+                if (!$this->validate([
+                    'minorder' => [
+                        'rules'  => 'required|is_natural_no_zero',
+                        'errors' => [
+                            'required' => 'Minimal order harus di isi',
+                            'is_natural_no_zero' => 'Minimal order tidak valid'
+                        ]
+                    ],
+                ])) {
+                    session()->setFlashdata('error', 'Gagal update minimal order');
+                    return redirect()->to(previous_url())->withInput();
+                }
+                $this->Produk->save([
+                    'id' => $id,
+                    'minorder' => $minorder
+                ]);
+                session()->setFlashdata('pesan', "Minimal order berhasil diubah menjadi $minorder");
+                $pesan = "Ada perubahan ketentuan order produk nih \nNama Produk : $oldname \nHarga : $oldharga @Kg \nStok : $oldstok Kg \nMinimal Order : '$oldminorder Kg' menjadi '$minorder Kg' \n \nTunggu apalagi?, Yuk buruan di order sebelum kehabisan :)";
+                kirim_user($pesan);
+                $pesanb = "Admin merubah ketentuan order pruduk \nNama Produk : $oldname \nHarga : $oldharga @Kg \nStok : $oldstok Kg \nMinimal Order : '$oldminorder Kg' menjadi '$minorder Kg'";
+                kirim_bendahara($pesanb);
+                return redirect()->to(previous_url())->withInput();
+                break;
+
+            case 'harga':
+                $harga = $this->request->getVar('harga');
+                if (!$this->validate([
+                    'harga' => [
+                        'rules'  => 'required|is_natural',
+                        'errors' => [
+                            'required' => 'Harga harus di isi',
+                            'is_natural' => 'Harga tidak valid'
+                        ]
+                    ],
+                ])) {
+                    session()->setFlashdata('error', 'Gagal update minimal order');
+                    return redirect()->to(previous_url())->withInput();
+                }
+                $this->Produk->save([
+                    'id' => $id,
+                    'harga' => $harga
+                ]);
+                $newharga = number_to_currency($harga, 'IDR', 'id_ID', 0);
+                session()->setFlashdata('pesan', "Harga berhasil diubah menjadi $newharga");
+                $pesan = "Ada perubahan harga produk nih \nNama Produk : $oldname \nHarga : '$oldharga @Kg' menjadi '$newharga @Kg' \nStok : $oldstok Kg \nMinimal Order : $oldminorder Kg \n \nTunggu apalagi?, Yuk buruan di order sebelum kehabisan :)";
+                kirim_user($pesan);
+                $pesanb = "Admin merubah harga pruduk \nNama Produk : $oldname \nHarga : '$oldharga @Kg' menjadi '$newharga @Kg' \nStok : $oldstok Kg \nMinimal Order : $oldminorder Kg";
+                kirim_bendahara($pesanb);
+                return redirect()->to(previous_url())->withInput();
+                break;
+
+            case 'stok':
+                $stok = $this->request->getVar('stok');
+                if (!$this->validate([
+                    'stok' => [
+                        'rules'  => 'required|is_natural',
+                        'errors' => [
+                            'required' => 'Stok harus di isi',
+                            'is_natural' => 'Stok tidak valid'
+                        ]
+                    ],
+                ])) {
+                    session()->setFlashdata('error', 'Gagal update minimal order');
+                    return redirect()->to(previous_url())->withInput();
+                }
+                $this->Produk->save([
+                    'id' => $id,
+                    'stok' => $stok
+                ]);
+                session()->setFlashdata('pesan', "Stok berhasil diubah menjadi $stok");
+                $pesan = "Ada perubahan stok produk nih \nNama Produk : $oldname \nHarga : $oldharga @Kg \nStok : '$oldstok Kg' menjadi '$stok Kg' \nMinimal Order : $oldminorder Kg \n \nTunggu apalagi?, Yuk buruan di order sebelum kehabisan :)";
+                kirim_user($pesan);
+                $pesanb = "Admin merubah stok pruduk \nNama Produk : $oldname \nHarga : $oldharga @Kg \nStok : '$oldstok Kg' menjadi '$stok Kg' \nMinimal Order : $oldminorder Kg";
+                kirim_bendahara($pesanb);
+                return redirect()->to(previous_url())->withInput();
+                break;
+
+            default:
+                session()->setFlashdata('error', 'Apa yang mau di edit?');
+                return redirect()->to(previous_url());
+                break;
+        }
+    }
 }

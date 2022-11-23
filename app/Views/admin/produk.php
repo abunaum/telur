@@ -131,17 +131,36 @@
                 <tbody>
                     <?php foreach ($produk as $prd) : ?>
                         <tr>
-                            <td><?= $prd['nama']; ?></td>
-                            <td><?= $prd['stok']; ?> Kg</td>
-                            <td><?= number_to_currency($prd['harga'], 'IDR', 'id_ID'); ?></td>
-                            <td>10</td>
+                            <td>
+                                <?= $prd['nama']; ?>&nbsp;
+                                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editnama-<?= $prd['id']; ?>">
+                                    <i class="ri-edit-fill me-1"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <?= $prd['stok']; ?> Kg&nbsp;
+                                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editstok-<?= $prd['id']; ?>">
+                                    <i class="ri-edit-fill me-1"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <?= number_to_currency($prd['harga'], 'IDR', 'id_ID'); ?> /Kg&nbsp;
+                                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editharga-<?= $prd['id']; ?>">
+                                    <i class="ri-edit-fill me-1"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <?= $prd['minorder']; ?> Kg&nbsp;
+                                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editminorder-<?= $prd['id']; ?>">
+                                    <i class="ri-edit-fill me-1"></i>
+                                </button>
+                            </td>
                             <td>
                                 <form class="d-inline" method="post" action="<?= base_url('admin/produk') . "/" . $prd['id']; ?>">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="_method" value="DELETE" />
-                                    <button type="button" class="btn btn-danger hps-prd" data-nama="<?= $prd['nama']; ?>">
+                                    <button type="button" class="btn btn-link hps-prd" data-nama="<?= $prd['nama']; ?>">
                                         <i class="ri-delete-bin-2-fill me-1"></i>
-                                        Hapus
                                     </button>
                                 </form>
                             </td>
@@ -152,6 +171,162 @@
         </div>
     </div>
 </div>
+
+<?php foreach ($produk as $prd) : ?>
+    <div class="modal fade" id="editnama-<?= $prd['id']; ?>" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Nama Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" action="<?= base_url('admin/produk/edit/' . $prd['id'] . '/nama'); ?>">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="PUT" />
+                    <div class="modal-body">
+                        <div class="col-md-12 mb-3">
+                            <label for="namalama" class="form-label">
+                                Nama Produk Lama
+                            </label>
+                            <input type="text" class="form-control" id="namalama" value="<?= $prd['nama']; ?>" disabled>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="nama" class="form-label">
+                                Nama Produk Baru
+                            </label>
+                            <input type="text" class="form-control <?= $validation->hasError('nama') ? 'is-invalid' : ''; ?>" id="nama" name="nama" placeholder="Nama" value="<?= old('nama') ?? $prd['nama']; ?>" required>
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('nama'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary edit_produk">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editminorder-<?= $prd['id']; ?>" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Minimal Order Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" action="<?= base_url('admin/produk/edit/' . $prd['id'] . '/minorder'); ?>">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="PUT" />
+                    <div class="modal-body">
+                        <div class="col-md-12 mb-3">
+                            <label for="nama" class="form-label">
+                                Nama Produk
+                            </label>
+                            <input type="text" class="form-control" placeholder="Nama" value="<?= $prd['nama']; ?>" disabled>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="hg" class="form-label">
+                                Minimal Order
+                            </label>
+                            <div class="input-group" id="hg">
+                                <input type="number" class="form-control <?= $validation->hasError('minorder') ? 'is-invalid' : ''; ?>" id="minorder" name="minorder" aria-describedby="minorderinput" placeholder="1" value="<?= old('minorder') ?? $prd['minorder']; ?>" required>
+                                <span class="input-group-text" id="minorderinput"> Kg</span>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('minorder'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary edit_produk">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editharga-<?= $prd['id']; ?>" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Harga Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" action="<?= base_url('admin/produk/edit/' . $prd['id'] . '/harga'); ?>">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="PUT" />
+                    <div class="modal-body">
+                        <div class="col-md-12 mb-3">
+                            <label for="nama" class="form-label">
+                                Nama Produk
+                            </label>
+                            <input type="text" class="form-control" placeholder="Nama" value="<?= $prd['nama']; ?>" disabled>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="hg" class="form-label">
+                                Harga
+                            </label>
+                            <div class="input-group" id="hg">
+                                <span class="input-group-text" id="hargainput">Rp.</span>
+                                <input type="number" class="form-control <?= $validation->hasError('harga') ? 'is-invalid' : ''; ?>" id="harga" name="harga" aria-describedby="hargainput" placeholder="harga" value="<?= old('harga') ?? $prd['harga']; ?>" required>
+                                <span class="input-group-text" id="hargainput"> / Kg</span>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('harga'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary edit_produk">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editstok-<?= $prd['id']; ?>" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Stok Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" action="<?= base_url('admin/produk/edit/' . $prd['id'] . '/stok'); ?>">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" value="PUT" />
+                    <div class="modal-body">
+                        <div class="col-md-12 mb-3">
+                            <label for="nama" class="form-label">
+                                Nama Produk
+                            </label>
+                            <input type="text" class="form-control" placeholder="Nama" value="<?= $prd['nama']; ?>" disabled>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="st" class="form-label">
+                                Stok
+                            </label>
+                            <div class="input-group" id="st">
+                                <input type="number" class="form-control <?= $validation->hasError('stok') ? 'is-invalid' : ''; ?>" id="stok" name="stok" aria-describedby="stokinput" placeholder="Stok" value="<?= old('stok') ?? $prd['stok']; ?>" required>
+                                <span class="input-group-text" id="stokinput">Kg</span>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('stok'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary edit_produk">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
 <!-- /.container-fluid -->
 <?= $this->endSection(); ?>
 
@@ -198,6 +373,10 @@
         var hargaawal = document.getElementById("harga").value.toString();
         var harga = hargaawal.split('.').join("");
         document.getElementById("harga").value = parseInt(harga);
+        this.form.submit();
+    });
+
+    $(".edit_produk").on('click', function(e) {
         this.form.submit();
     });
 

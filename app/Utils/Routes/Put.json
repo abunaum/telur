@@ -16,6 +16,11 @@
         "url": "/admin/setting/(:any)",
         "controller": "FunctionAdmin\\Put",
         "class": "setting/$1"
+      },
+      {
+        "url": "/admin/produk/edit/(:num)/(:any)",
+        "controller": "FunctionAdmin\\Put",
+        "class": "produk/$1/$2"
       }
     ]
   },

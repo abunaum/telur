@@ -35,10 +35,10 @@ class Post extends BaseController
                 ]
             ],
             'minorder' => [
-                'rules'  => 'required|is_natural',
+                'rules'  => 'required|is_natural_no_zero',
                 'errors' => [
                     'required' => 'Minimal order harus di isi',
-                    'is_natural' => 'Minimal order tidak valid'
+                    'is_natural_no_zero' => 'Minimal order tidak valid'
                 ]
             ],
         ])) {

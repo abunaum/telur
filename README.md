@@ -35,13 +35,33 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
 ---
 
+### V 22.11.23.2
+
+- Edit FunctionAdmin/[Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php)
+
+  -> Fix add product (minimal order must be large than 0)
+
+- Edit FunctionAdmin/[Put.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Put.php)
+
+  -> Edit product with notification to user and bendahara
+
+- Edit Views/admin/[produk.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Views/admin/produk.php)
+
+  -> Add edit button product
+
+- Edit Utils/Routes/[Put.json](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/Routes/Put.json)
+
+  -> Add Route to edit product
+
+---
+
 ### V 22.11.23.1
 
-- Edit FunctionAdmin[Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php)
+- Edit FunctionAdmin/[Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php)
 
   -> Add Telegram notif for user and bendahara, when admin add product
 
-- Edit FunctionAdmin[Delete.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Delete.php)
+- Edit FunctionAdmin/[Delete.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Delete.php)
 
   -> Add Telegram notif for user and bendahara, when admin remove product
 
