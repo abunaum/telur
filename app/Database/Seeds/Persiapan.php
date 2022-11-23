@@ -29,6 +29,16 @@ class Persiapan extends Seeder
                 'force_pass_reset' => 0,
                 'created_at' => Time::now('Asia/Jakarta', 'id_ID'),
                 'updated_at' => Time::now('Asia/Jakarta', 'id_ID'),
+            ],
+            [
+                'username' => 'user',
+                'email'    => 'user@gmail.com',
+                'fullname' => 'User',
+                'password_hash' => '$2y$10$ygOSQ0zEaPzApZKqpVi2YeKVeT4KMT2g4tuHWeyZSOQ7y5tIJgJcm',
+                'active' => 1,
+                'force_pass_reset' => 0,
+                'created_at' => Time::now('Asia/Jakarta', 'id_ID'),
+                'updated_at' => Time::now('Asia/Jakarta', 'id_ID'),
             ]
         ];
         $this->db->table('users')->insertBatch($datauser);
@@ -58,6 +68,10 @@ class Persiapan extends Seeder
             [
                 'group_id' => 2,
                 'user_id'    => 2
+            ],
+            [
+                'group_id' => 3,
+                'user_id'    => 3
             ]
         ];
         $this->db->table('auth_groups_users')->insertBatch($data_auth_groups_users);
@@ -65,9 +79,18 @@ class Persiapan extends Seeder
         $data_telegram = [
             [
                 'user_id'    => 1,
+                'tele_id'   => '799163200',
+                'status'    => 'valid'
             ],
             [
-                'user_id'    => 2
+                'user_id'    => 2,
+                'tele_id'   => '824122355',
+                'status'    => 'valid'
+            ],
+            [
+                'user_id'    => 3,
+                'tele_id'   => '5492608378',
+                'status'    => 'valid'
             ]
         ];
         $this->db->table('telegram')->insertBatch($data_telegram);

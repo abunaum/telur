@@ -35,6 +35,30 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
 ---
 
+### V 22.11.23.1
+
+- Edit FunctionAdmin[Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php)
+
+  -> Add Telegram notif for user and bendahara, when admin add product
+
+- Edit FunctionAdmin[Delete.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Delete.php)
+
+  -> Add Telegram notif for user and bendahara, when admin remove product
+
+- Modify Seeds [Persiapan.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Database/Seeds/Persiapan.php)
+
+  -> Add user for seeder
+
+- Modify [Helpers/telegram_helper.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Helpers/telegram_helper.php)
+
+  -> Add function kirim by role
+
+- Modify [Helpers/group_helper.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Helpers/group_helper.php)
+
+  -> Add function filter user by role
+
+---
+
 ### V 22.11.21.1
 
 - Edit [Routes](https://gitlab.com/abunaum/telur/-/blob/main/app/Utils/Routes) location
@@ -45,7 +69,7 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
   -> Modify Routes directory files
 
-- Modify dashboard views file for all rules [dashboard.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Views/dashboard)
+- Modify dashboard views file for all rules [dashboard.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Views/dashboard.php)
 
   -> Controller [Admin](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/Admin.php)
 

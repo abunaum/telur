@@ -27,3 +27,42 @@ function kirimpesan($chatId, $pesan)
         return false;
     }
 }
+
+function kirim_user($pesan)
+{
+    helper('group');
+    $alluser = getuserfull();
+    $user = useronly($alluser);
+    foreach ($user as $usr) {
+        if ($usr['tele_status'] === 'valid') {
+            $tele_id = $usr['tele_id'];
+            kirimpesan($tele_id, $pesan);
+        }
+    }
+}
+
+function kirim_bendahara($pesan)
+{
+    helper('group');
+    $alluser = getuserfull();
+    $user = bendaharaonly($alluser);
+    foreach ($user as $usr) {
+        if ($usr['tele_status'] === 'valid') {
+            $tele_id = $usr['tele_id'];
+            kirimpesan($tele_id, $pesan);
+        }
+    }
+}
+
+function kirim_admin($pesan)
+{
+    helper('group');
+    $alluser = getuserfull();
+    $user = adminonly($alluser);
+    foreach ($user as $usr) {
+        if ($usr['tele_status'] === 'valid') {
+            $tele_id = $usr['tele_id'];
+            kirimpesan($tele_id, $pesan);
+        }
+    }
+}

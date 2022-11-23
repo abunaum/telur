@@ -45,16 +45,24 @@ class Post extends BaseController
             session()->setFlashdata('error', 'Gagal menambah produk');
             return redirect()->to(base_url('/produk'))->withInput();
         }
+        $nama = $this->request->getVar("nama");
+        $stok = $this->request->getVar("stok");
+        $harga = $this->request->getVar("harga");
+        $minorder = $this->request->getVar("minorder");
         $data = [
-            "nama" => $this->request->getVar("nama"),
-            "stok" => (int)$this->request->getVar("stok"),
-            "harga" => (int)$this->request->getVar("harga"),
-            "minorder" => (int)$this->request->getVar("minorder"),
+            "nama" => $nama,
+            "stok" => (int)$stok,
+            "harga" => (int)$harga,
+            "minorder" => (int)$minorder,
         ];
 
         $produk =  $this->Produk;
         $produk->insert($data);
         session()->setFlashdata('pesan', 'Berhasil menambah produk');
+        $pesan = "Ada produk baru nih \nNama Produk : $nama \nHarga : $harga @Kg \nStok : $stok Kg \nMinimal Order : $minorder Kg \n \nTunggu apalagi?, Yuk buruan di order :)";
+        kirim_user($pesan);
+        $pesanb = "Admin menambah produk baru \nNama Produk : $nama \nHarga : $harga @Kg \nStok : $stok Kg \nMinimal Order : $minorder Kg";
+        kirim_bendahara($pesanb);
         return redirect()->to(base_url('/produk'));
     }
 

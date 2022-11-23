@@ -20,6 +20,10 @@ class Delete extends BaseController
         $nama = $produk['nama'];
         $this->Produk->delete($id);
         session()->setFlashdata('pesan', "Berhasil menghapus $nama");
+        $pesan = "Yah, Produk '$nama' sudah tidak tersedia lagi (Dihapus Oleh Admin) dan tidak dapat di order lagi";
+        kirim_user($pesan);
+        $pesanb = "Produk '$nama' sudah dihapus oleh admin";
+        kirim_bendahara($pesanb);
         return redirect()->to(base_url('/produk'));
     }
 
