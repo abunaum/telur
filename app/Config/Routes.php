@@ -43,7 +43,9 @@ foreach ($routget as $rget) {
     switch ($role) {
         case 'norole':
             foreach ($rget['data'] as $data) {
-                $routes->get($data["url"], $data["controller"] . "::" . $data["class"]);
+                if (!array_key_exists("div", $data)) {
+                    $routes->get($data["url"], $data["controller"] . "::" . $data["class"]);
+                }
             }
             break;
 
@@ -70,9 +72,7 @@ foreach ($routpost as $rpost) {
 
         default:
             foreach ($rpost['data'] as $data) {
-                if (!array_key_exists("div", $data)) {
-                    $routes->post($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
-                }
+                $routes->post($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
             }
             break;
     }
@@ -92,9 +92,7 @@ foreach ($routdelete as $rdelete) {
 
         default:
             foreach ($rdelete['data'] as $data) {
-                if (!array_key_exists("div", $data)) {
-                    $routes->delete($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
-                }
+                $routes->delete($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
             }
             break;
     }
@@ -113,9 +111,7 @@ foreach ($routput as $rput) {
 
         default:
             foreach ($rput['data'] as $data) {
-                if (!array_key_exists("div", $data)) {
-                    $routes->put($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
-                }
+                $routes->put($data["url"], $data["controller"] . "::" . $data["class"], ['filter' => "role:$role"]);
             }
             break;
     }

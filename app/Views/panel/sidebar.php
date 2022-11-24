@@ -26,6 +26,20 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
+            <?php if ($r['role'] === "norole") : ?>
+                <?php foreach ($r['data'] as $data) : ?>
+                    <?php if (array_key_exists("div", $data)) : ?>
+                        <li class="nav-heading"><?= $data['text']; ?></li>
+                    <?php elseif ($data['list'] === true) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link " href="<?= $data['url']; ?>">
+                                <i class="<?= $data['icon']; ?>"></i>
+                                <span><?= $data['name']; ?></span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         <?php endforeach; ?>
     </ul>
 

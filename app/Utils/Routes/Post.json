@@ -18,5 +18,15 @@
         "class": "tambah_bendahara"
       }
     ]
+  },
+  {
+    "role": "user",
+    "data": [
+      {
+        "url": "/order/(:num)",
+        "controller": "FunctionUser\\Post",
+        "class": "order/$1"
+      }
+    ]
   }
 ]

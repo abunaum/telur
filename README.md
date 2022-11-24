@@ -35,6 +35,18 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
 ---
 
+### V 22.11.24.1
+
+- Add Fitur user
+
+  -> Add fitur order user
+
+  -> Add fitur list transaksi user
+
+  -> Add fitur check detail order user
+
+---
+
 ### V 22.11.23.2
 
 - Edit FunctionAdmin/[Post.php](https://gitlab.com/abunaum/telur/-/blob/main/app/Controllers/FunctionAdmin/Post.php)

@@ -1,28 +1,5 @@
 [
   {
-    "role": "norole",
-    "data": [
-      {
-        "url": "/login",
-        "controller": "Auth",
-        "class": "index",
-        "list": false
-      },
-      {
-        "url": "/",
-        "controller": "Auth",
-        "class": "cekrole",
-        "list": false
-      },
-      {
-        "url": "/setting",
-        "controller": "Auth",
-        "class": "setting",
-        "list": false
-      }
-    ]
-  },
-  {
     "role": "admin",
     "data": [
       {
@@ -117,10 +94,71 @@
         "icon": "ri-home-2-line"
       },
       {
+        "div": true,
+        "text": "Data"
+      },
+      {
+        "url": "/list-produk",
+        "controller": "User",
+        "class": "produk",
+        "name": "Pruduk",
+        "list": true,
+        "icon": "ri-star-line"
+      },
+      {
+        "url": "/order/detail/(:num)",
+        "controller": "User",
+        "class": "detailorder/$1",
+        "list": false
+      },
+      {
+        "url": "/list-transaksi",
+        "controller": "User",
+        "class": "transaksi",
+        "name": "Transaksi",
+        "list": true,
+        "icon": "ri-shopping-cart-line"
+      },
+      {
         "url": "/user-setting",
         "controller": "User",
         "class": "setting",
         "list": false
+      }
+    ]
+  },
+  {
+    "role": "norole",
+    "data": [
+      {
+        "url": "/login",
+        "controller": "Auth",
+        "class": "index",
+        "list": false
+      },
+      {
+        "url": "/",
+        "controller": "Auth",
+        "class": "cekrole",
+        "list": false
+      },
+      {
+        "url": "/setting",
+        "controller": "Auth",
+        "class": "setting",
+        "list": false
+      },
+      {
+        "div": true,
+        "text": "App"
+      },
+      {
+        "url": "/setting",
+        "controller": "Auth",
+        "class": "Setting",
+        "name": "Setting",
+        "list": true,
+        "icon": "ri-settings-3-line"
       }
     ]
   }
