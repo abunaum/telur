@@ -15,6 +15,48 @@ class Bendahara extends BaseController
         return view('dashboard', $data);
     }
 
+    public function transaksi()
+    {
+        $transaksi = $this->Transaksi;
+        $transaksi->join('produk', 'produk.id = produk_id', 'LEFT');
+        $transaksi->select('transaksi.*');
+        $transaksi->select('produk.nama as nama_produk');
+        $transaksi = $transaksi->findAll();
+        $data = [
+            'namaweb' => $this->namaweb,
+            'halaman' => "Transaksi",
+            'transaksi' => $transaksi,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('bendahara/transaksi', $data);
+    }
+
+    public function detailorder($id = 0)
+    {
+        $transaksi = $this->Transaksi;
+        $transaksi->join('produk', 'produk.id = produk_id', 'LEFT');
+        $transaksi->join('users', 'users.id = user_id', 'LEFT');
+        $transaksi->select('transaksi.*');
+        $transaksi->select('users.username');
+        $transaksi->select('users.fullname');
+        $transaksi->select('users.email');
+        $transaksi->select('users.alamat');
+        $transaksi->select('produk.nama as nama_produk');
+        $transaksi->where('transaksi.id', $id);
+        $transaksi = $transaksi->first();
+        if (!$transaksi) {
+            session()->setFlashdata('error', 'Transaksi tidak valid');
+            return redirect()->to(previous_url());
+        }
+        $data = [
+            'namaweb' => $this->namaweb,
+            'halaman' => "Order Detail",
+            'transaksi' => $transaksi,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('bendahara/detail_order', $data);
+    }
+
     public function setting()
     {
         helper('group');

@@ -37,7 +37,7 @@ class User extends BaseController
         $transaksi = $transaksi->first();
         if (!$transaksi) {
             session()->setFlashdata('error', 'Transaksi tidak valid');
-            return redirect()->to(base_url('transaksi'));
+            return redirect()->to(previous_url());
         }
         if ($transaksi['user_id'] !== user()->id) {
             session()->setFlashdata('error', 'Transaksi tidak valid');
@@ -62,7 +62,7 @@ class User extends BaseController
         $transaksi = $transaksi->findAll();
         $data = [
             'namaweb' => $this->namaweb,
-            'halaman' => "Order Detail",
+            'halaman' => "Transaksi",
             'transaksi' => $transaksi,
             'validation' => \Config\Services::validation()
         ];

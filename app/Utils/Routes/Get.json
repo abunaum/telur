@@ -75,6 +75,24 @@
         "icon": "ri-home-2-line"
       },
       {
+        "div": true,
+        "text": "Data"
+      },
+      {
+        "url": "/transaksi-user",
+        "controller": "Bendahara",
+        "class": "transaksi",
+        "name": "Transaksi",
+        "list": true,
+        "icon": "ri-shopping-cart-line"
+      },
+      {
+        "url": "/transaksi-user/detail/(:num)",
+        "controller": "Bendahara",
+        "class": "detailorder/$1",
+        "list": false
+      },
+      {
         "url": "/bendahara-setting",
         "controller": "Bendahara",
         "class": "setting",

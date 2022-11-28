@@ -35,6 +35,18 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
 ---
 
+### V 22.11.28.1
+
+- Add Fitur transaksi Bendahara
+
+  -> Add fitur list transaksi
+
+  -> Add fitur detail transaksi
+
+  -> Add fitur change status transaksi
+
+---
+
 ### V 22.11.24.1
 
 - Add Fitur user

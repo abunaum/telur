@@ -46,10 +46,25 @@
                     </tr>
                     <tr>
                         <th scope="row">Status</th>
-                        <td><?= ucwords($transaksi['status']); ?></td>
+                        <td>
+                            <?php if ($transaksi['status'] = 1) : ?>
+                                Proses
+                            <?php elseif ($transaksi['status'] = 2) : ?>
+                                Dikirim
+                            <?php elseif ($transaksi['status'] = 3) : ?>
+                                Selesai
+                            <?php else : ?>
+                                Ditolak
+                            <?php endif; ?>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+            <center>
+                <a href="<?= base_url('list-transaksi'); ?>">
+                    <button type="button" class="btn btn-info">List transaksi</button>
+                </a>
+            </center>
         </div>
     </div>
 </div>

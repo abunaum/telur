@@ -23,6 +23,7 @@ class Admin extends BaseController
         $getuser->select('email');
         $getuser->select('username');
         $getuser->select('fullname');
+        $getuser->select('alamat');
         $alluser = $getuser->findAll();
         $user = [];
         foreach ($alluser as $usr) {
@@ -72,6 +73,7 @@ class Admin extends BaseController
         $getuser->select('email');
         $getuser->select('username');
         $getuser->select('fullname');
+        $getuser->select('alamat');
         $alluser = $getuser->findAll();
         $user = [];
         foreach ($alluser as $usr) {

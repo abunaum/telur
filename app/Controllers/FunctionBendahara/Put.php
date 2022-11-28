@@ -194,4 +194,33 @@ class Put extends BaseController
                 break;
         }
     }
+
+    public function order($value = "", $id = 0)
+    {
+        if ($id < 1) {
+            session()->setFlashdata('error', 'Id produk tidak valid');
+            return redirect()->to(previous_url());
+        }
+
+        $Transaksi = $this->Transaksi->where('id', $id)->first();
+        if (!$Transaksi) {
+            session()->setFlashdata('error', 'Transaksi tidak ditemukan');
+            return redirect()->to(previous_url());
+        }
+        switch ($value) {
+            case 'kirim':
+                $this->Transaksi->save([
+                    'id' => $id,
+                    'status' => 2
+                ]);
+                session()->setFlashdata('pesan', $Transaksi['kode'] . ' berhasil di kirim. <br>Silahakan cetak Invoice.');
+                return redirect()->to(previous_url());
+                break;
+
+
+            default:
+                return redirect()->to(previous_url());
+                break;
+        }
+    }
 }

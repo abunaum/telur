@@ -76,18 +76,18 @@
                                 <?= $t['jumlah']; ?>
                             </td>
                             <td>
-                                <?php if ($t['status'] = 1) : ?>
-                                    Proses
-                                <?php elseif ($t['status'] = 2) : ?>
+                                <?php if ($t['status'] === '1') : ?>
+                                    Menunggu Respon
+                                <?php elseif ($t['status'] === '2') : ?>
                                     Dikirim
-                                <?php elseif ($t['status'] = 3) : ?>
+                                <?php elseif ($t['status'] === '3') : ?>
                                     Selesai
                                 <?php else : ?>
                                     Ditolak
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="<?= base_url('order/detail/' . $t['id']); ?>">
+                                <a href="<?= base_url('transaksi-user/detail/' . $t['id']); ?>">
                                     <button type="button" class="btn btn-info">Detail</button>
                                 </a>
                             </td>

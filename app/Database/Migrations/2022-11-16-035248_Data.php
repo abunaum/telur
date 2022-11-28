@@ -29,7 +29,7 @@ class Data extends Migration
             'kode'            => ['type' => 'varchar', 'constraint' => 255],
             'jumlah'         => ['type' => 'int', 'constraint' => 11, 'default' => 1],
             'total_harga'         => ['type' => 'int', 'constraint' => 11],
-            'status'            => ['type' => 'varchar', 'constraint' => 255],
+            'status'            => ['type' => 'int', 'constraint' => 11],
             'created_at'       => ['type' => 'datetime', 'null' => true],
             'updated_at'       => ['type' => 'datetime', 'null' => true],
             'deleted_at'       => ['type' => 'datetime', 'null' => true],

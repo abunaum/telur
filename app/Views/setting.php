@@ -74,6 +74,25 @@
                         </td>
                     </tr>
                     <tr>
+                        <th scope="row">Alamat</th>
+                        <td><?= $user->alamat; ?></td>
+                        <?php if ($group === 'admin') : ?>
+                            <td>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editAlamat">
+                                    <i class="ri-edit-box-line me-1"></i>
+                                    Edit Alamat
+                                </button>
+                            </td>
+                        <?php else : ?>
+                            <td>
+                                <button type="button" class="btn btn-success" onclick="disableAlamat()">
+                                    <i class="ri-edit-box-line me-1"></i>
+                                    Edit Alamat
+                                </button>
+                            </td>
+                        <?php endif; ?>
+                    </tr>
+                    <tr>
                         <th scope="row">Notifikasi</th>
                         <?php if ($telegram['tele_id'] === '') : ?>
                             <td>Mati</td>
@@ -136,6 +155,36 @@
                         <input type="text" class="form-control <?= $validation->hasError('nama') ? 'is-invalid' : ''; ?>" id="nama" name="nama" placeholder="Nama" value="<?= old('nama') ?? $user->fullname ?>" required>
                         <div class="invalid-feedback">
                             <?= $validation->getError('nama'); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editAlamat" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Alamat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
+            </div>
+            <form method="post" action="<?= base_url($group . '/setting/alamat'); ?>">
+                <?= csrf_field() ?>
+                <input type="hidden" name="_method" value="PUT" />
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <label for="alamat" class="form-label">
+                            Alamat
+                        </label>
+                        <input type="text" class="form-control <?= $validation->hasError('alamat') ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" placeholder="alamat" value="<?= old('alamat') ?? $user->alamat ?>" required>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('alamat'); ?>
                         </div>
                     </div>
                 </div>
@@ -321,4 +370,24 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+<?= $this->endSection(); ?>
+
+<?= $this->section('script'); ?>
+<script>
+    function disableAlamat() {
+        Swal.fire({
+            title: 'Ooops!',
+            html: 'Untuk mengubah alamat silahkan hubungi Admin.',
+            icon: 'warning',
+            timer: 5000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {},
+            willClose: () => {}
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {}
+        })
+    }
+</script>
 <?= $this->endSection(); ?>

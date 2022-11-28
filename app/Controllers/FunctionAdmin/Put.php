@@ -28,7 +28,42 @@ class Put extends BaseController
 
         $this->User->save($data);
         session()->setFlashdata('pesan', "Berhasil mereset password $email");
-        return redirect()->to(base_url('/user'));
+        return redirect()->to(previous_url());
+    }
+
+    public function alamat_user($id = 0)
+    {
+        if ($id < 1) {
+            return redirect()->to(base_url());
+        }
+        if (!$this->validate([
+            'alamat' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Alamat harus di isi',
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('error', 'Gagal edit alamat');
+            return redirect()->to(previous_url())->withInput();
+        }
+        $user = $this->User->where('id', $id)->first();
+
+        if (!$user) {
+            session()->setFlashdata('error', 'Id user tidak valid');
+            return redirect()->to(previous_url());
+        }
+        $alamat = $this->request->getVar('alamat');
+        $username = $user['username'];
+
+        $data = [
+            "id" => $id,
+            "alamat" => $alamat,
+        ];
+
+        $this->User->save($data);
+        session()->setFlashdata('pesan', "Berhasil mengganti alamat @$username menjadi $alamat");
+        return redirect()->to(previous_url());
     }
 
     public function bendahara($id = 0)
@@ -72,6 +107,27 @@ class Put extends BaseController
                     'fullname' => $nama
                 ]);
                 session()->setFlashdata('pesan', 'Nama berhasil di edit');
+                return redirect()->to(previous_url());
+                break;
+
+            case 'alamat':
+                $alamat = $this->request->getVar('alamat');
+                if (!$this->validate([
+                    'alamat' => [
+                        'rules'  => 'required',
+                        'errors' => [
+                            'required' => 'Alamat harus di isi',
+                        ]
+                    ],
+                ])) {
+                    session()->setFlashdata('error', 'Gagal edit alamat');
+                    return redirect()->to(previous_url())->withInput();
+                }
+                $this->User->save([
+                    'id' => user()->id,
+                    'alamat' => $alamat
+                ]);
+                session()->setFlashdata('pesan', 'Alamat berhasil di edit');
                 return redirect()->to(previous_url());
                 break;
 
@@ -225,7 +281,6 @@ class Put extends BaseController
                 ]);
                 session()->setFlashdata('pesan', 'Notifikasi berhasil aktif');
                 return redirect()->to(previous_url());
-
                 break;
 
 

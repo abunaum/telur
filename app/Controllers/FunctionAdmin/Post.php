@@ -69,6 +69,7 @@ class Post extends BaseController
     public function tambah_user()
     {
         $nama = $this->request->getVar('nama');
+        $alamat = $this->request->getVar('alamat');
         $email = $this->request->getVar('email');
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
@@ -77,6 +78,12 @@ class Post extends BaseController
                 'rules'  => 'required',
                 'errors' => [
                     'required' => 'Nama harus di isi',
+                ]
+            ],
+            'alamat' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Alamat harus di isi',
                 ]
             ],
             'email' => [
@@ -111,6 +118,7 @@ class Post extends BaseController
             "email" => $email,
             "password_hash" => $fixpass,
             "fullname" => $nama,
+            "alamat" => $alamat,
             "active" => 1,
             "force_pass_reset" => 0
         ];
@@ -137,6 +145,7 @@ class Post extends BaseController
     public function tambah_bendahara()
     {
         $nama = $this->request->getVar('nama');
+        $alamat = $this->request->getVar('alamat');
         $email = $this->request->getVar('email');
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
@@ -145,6 +154,12 @@ class Post extends BaseController
                 'rules'  => 'required',
                 'errors' => [
                     'required' => 'Nama harus di isi',
+                ]
+            ],
+            'alamat' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Alamat harus di isi',
                 ]
             ],
             'email' => [
@@ -180,6 +195,7 @@ class Post extends BaseController
             "password_hash" => $fixpass,
             "fullname" => $nama,
             "active" => 1,
+            "alamat" => $alamat,
             "force_pass_reset" => 0
         ];
 

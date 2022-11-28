@@ -8,6 +8,11 @@
         "class": "user/$1"
       },
       {
+        "url": "/admin/user/alamat/(:num)",
+        "controller": "FunctionAdmin\\Put",
+        "class": "alamat_user/$1"
+      },
+      {
         "url": "/admin/bendahara/(:num)",
         "controller": "FunctionAdmin\\Put",
         "class": "bendahara/$1"
@@ -31,6 +36,11 @@
         "url": "/bendahara/setting/(:any)",
         "controller": "FunctionBendahara\\Put",
         "class": "setting/$1"
+      },
+      {
+        "url": "/bendahara/order/(:any)/(:num)",
+        "controller": "FunctionBendahara\\Put",
+        "class": "order/$1/$2"
       }
     ]
   },

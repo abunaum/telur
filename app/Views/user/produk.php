@@ -44,7 +44,6 @@
             <div class="row align-items-top justify-content-center">
                 <?php if ($produk) : ?>
                     <?php foreach ($produk as $p) : ?>
-                        <?php $id = $p['id']; ?>
                         <div class="col-lg-3">
                             <div class="card text-center">
                                 <div class="card-header">
@@ -57,7 +56,7 @@
                                     <p class="card-text">Stok : <?= $p['stok']; ?> Kg</p>
                                     <p class="card-text">Minimal Order : <?= $p['minorder']; ?> Kg</p>
                                     <p>Jumlah Order</p>
-                                    <form action="<?= base_url("order/$id"); ?>" method="post">
+                                    <form action="<?= base_url('order/' . $p['id']); ?>" method="post">
                                         <?= csrf_field() ?>
                                         <div class="input-group mb-3">
                                             <input type="number" class="form-control" id="order" name="order" aria-describedby="orderinput" placeholder="Order" min="<?= $p['minorder']; ?>" required>

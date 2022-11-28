@@ -13,13 +13,13 @@ class Post extends BaseController
 
     public function order($id = 0)
     {
-        if ($id <= 1) {
+        if ($id < 1) {
             session()->setFlashdata('error', 'Order tidak valid');
             return redirect()->to(previous_url());
         }
         $produk = $this->Produk->where('id', $id)->first();
         if (!$produk) {
-            session()->setFlashdata('error', 'Order tidak valid');
+            session()->setFlashdata('error', 'Produk tidak valid');
             return redirect()->to(previous_url());
         }
         if (!$this->request->getVar('order')) {
@@ -40,7 +40,7 @@ class Post extends BaseController
                 'kode'      => $kode,
                 'jumlah'    => $order,
                 'total_harga' => $produk['harga'] * $order,
-                'status'    => 'menunggu pembayaran'
+                'status'    => 1
             ]
         );
         session()->setFlashdata('pesan', 'Produk ' . $produk['nama'] . ' berhasil di order. <br>Harap segera melakukan pembayaran');
