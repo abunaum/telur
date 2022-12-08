@@ -19,8 +19,13 @@ jobs:
         port: 22
         script: |
           cd /www/wwwroot/afif.projectskripsi.live
-          git pull origin main
-          git status
+          rm -rf *
+          git clone https://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@github.com/abunaum/telur.git
+          cd telur
+          cp * /www/wwwroot/afif.projectskripsi.live
+          cd /www/wwwroot
+          sudo chmod -R 777 afif.projectskripsi.live/*
+          cd afif.projectskripsi.live
           composer install
           php spark command:name DB
           php spark migrate -all
