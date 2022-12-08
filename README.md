@@ -6,9 +6,9 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid.
 
 ## Requirements
 
-- php 7.4 (extension: intl , mbstring, putenv)
-- mysql
-- composer
+- php 7.4 (extension: intl , mbstring, putenv).
+- mysql.
+- composer.
 
 ---
 
