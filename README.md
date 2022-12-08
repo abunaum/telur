@@ -1,4 +1,4 @@
-# Legi Jaya Farm
+# Legi Jaya Farm App
 
 Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid.
 
