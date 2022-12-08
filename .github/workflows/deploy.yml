@@ -23,4 +23,4 @@ jobs:
           composer install
           php spark command:name DB
           php spark migrate -all
-          php db:seed Persiapan
+          php spark db:seed Persiapan
