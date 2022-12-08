@@ -18,4 +18,9 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
-          cd /www/wwwroot/afif.projectskripsi.live && rm -rf * && git clone https://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@github.com/abunaum/telur.git && cd telur && composer install && php spark command:name DB && php spark migrate -all && php db:seed Persiapan
+          cd /www/wwwroot/afif.projectskripsi.live/telur
+          git pull
+          composer install
+          php spark command:name DB
+          php spark migrate -all
+          php db:seed Persiapan
