@@ -1,6 +1,6 @@
 # Legi Jaya Farm
 
-Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
+Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid.
 
 ---
 
