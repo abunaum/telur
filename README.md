@@ -25,6 +25,7 @@ Aplikasi ini di ajukan untuk project skripsi Universitas Nurul Jadid
 
 | Function   | Command                       |
 | ---------- | ----------------------------- |
+| DB         | `php spark command:name DB`   |
 | Migration  | `php spark migrate -all`      |
 | Seeder     | `php spark db:seed Persiapan` |
 | Run Server | `php spark serve`             |
