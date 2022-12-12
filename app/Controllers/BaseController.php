@@ -59,5 +59,6 @@ abstract class BaseController extends Controller
         $this->Produk = new \App\Models\Produk();
         $this->Telegram = new \App\Models\Telegram();
         $this->Transaksi = new \App\Models\Transaksi();
+        $this->Log_Saldo = new \App\Models\LogSaldo();
     }
 }

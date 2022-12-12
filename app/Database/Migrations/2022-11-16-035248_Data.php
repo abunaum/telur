@@ -42,6 +42,19 @@ class Data extends Migration
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
 
         $this->forge->createTable('transaksi', true);
+
+        $this->forge->addField([
+            'id'               => ['type' => 'int', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'jenis'            => ['type' => 'varchar', 'constraint' => 255],
+            'nominal'          => ['type' => 'int', 'constraint' => 11, 'default' => 0],
+            'keterangan'        => ['type' => 'varchar', 'constraint' => 255],
+            'created_at'       => ['type' => 'datetime', 'null' => true],
+            'updated_at'       => ['type' => 'datetime', 'null' => true],
+            'deleted_at'       => ['type' => 'datetime', 'null' => true],
+        ]);
+
+        $this->forge->addKey('id', true);
+        $this->forge->createTable('log_saldo', true);
     }
 
     public function down()
@@ -51,5 +64,7 @@ class Data extends Migration
             $this->forge->dropForeignKey('transaksi', 'transaksi_user_id_foreign');
         }
         $this->forge->dropTable('produk', true);
+        $this->forge->dropTable('transaksi', true);
+        $this->forge->dropTable('log_saldo', true);
     }
 }

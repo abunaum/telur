@@ -32,6 +32,7 @@ class User extends BaseController
         $transaksi = $this->Transaksi;
         $transaksi->join('produk', 'produk.id = produk_id', 'LEFT');
         $transaksi->select('transaksi.*');
+        $transaksi->select('transaksi.status as status_transaksi');
         $transaksi->select('produk.nama as nama_produk');
         $transaksi->where('transaksi.id', $id);
         $transaksi = $transaksi->first();
@@ -57,6 +58,7 @@ class User extends BaseController
         $transaksi = $this->Transaksi;
         $transaksi->join('produk', 'produk.id = produk_id', 'LEFT');
         $transaksi->select('transaksi.*');
+        $transaksi->select('transaksi.status as status_transaksi');
         $transaksi->select('produk.nama as nama_produk');
         $transaksi->where('transaksi.user_id', user()->id);
         $transaksi = $transaksi->findAll();

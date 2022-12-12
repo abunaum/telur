@@ -47,11 +47,11 @@
                     <tr>
                         <th scope="row">Status</th>
                         <td>
-                            <?php if ($transaksi['status'] = 1) : ?>
+                            <?php if ($transaksi['status_transaksi'] === '1') : ?>
                                 Proses
-                            <?php elseif ($transaksi['status'] = 2) : ?>
+                            <?php elseif ($transaksi['status_transaksi'] === '2') : ?>
                                 Dikirim
-                            <?php elseif ($transaksi['status'] = 3) : ?>
+                            <?php elseif ($transaksi['status_transaksi'] === '3') : ?>
                                 Selesai
                             <?php else : ?>
                                 Ditolak

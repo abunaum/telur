@@ -254,8 +254,21 @@ class Put extends BaseController
                 session()->setFlashdata('pesan', $Transaksi['kode'] . ' berhasil di tolak.');
                 return redirect()->to(previous_url());
                 break;
-
-
+            case 'selesai':
+                $this->Transaksi->save([
+                    'id' => $id,
+                    'status' => 3
+                ]);
+                $this->Log_Saldo->save([
+                    'jenis' => 'masuk',
+                    'nominal' => $totalharga,
+                    'keterangan' => "Penjualan Produk $namaproduk dengan kode transaksi $kode",
+                ]);
+                $pesan = "Transaksi anda telah selesai. \nKode Transaksi : $kode \nNama Produk : $namaproduk\nHarga : $hargaprodukidr / Kg\nJumlah Order : $jumlah Kg\nTotal Bayar : $hargatotalidr \n \nTerima kasih telah berbelanja di toko kami";
+                kirim_sigle($user_id, $pesan);
+                session()->setFlashdata('pesan', $Transaksi['kode'] . ' berhasil di selesaikan.');
+                return redirect()->to(previous_url());
+                break;
             default:
                 session()->setFlashdata('error', 'Aksi tidak valid');
                 return redirect()->to(previous_url());

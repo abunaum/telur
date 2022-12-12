@@ -247,5 +247,22 @@
             }
         })
     })
+    $(".selesai-order").on('click', function(e) {
+        var kode = $(this).data('transaksi');
+        Swal.fire({
+            title: 'Anda yakin?',
+            text: 'Mau akan mengubah status transaksi ' + kode + ' manjadi Selesai ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Selesai',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.form.submit();
+            }
+        })
+    })
 </script>
 <?= $this->endSection(); ?>

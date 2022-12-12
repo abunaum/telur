@@ -73,14 +73,14 @@
                                 <?= number_to_currency($t['total_harga'] / $t['jumlah'], 'IDR', 'id_ID'); ?> / Kg
                             </td>
                             <td>
-                                <?= $t['jumlah']; ?>
+                                <?= $t['jumlah']; ?> Kg
                             </td>
                             <td>
-                                <?php if ($t['status'] = 1) : ?>
+                                <?php if ($t['status_transaksi'] === '1') : ?>
                                     Proses
-                                <?php elseif ($t['status'] = 2) : ?>
+                                <?php elseif ($t['status_transaksi'] === '2') : ?>
                                     Dikirim
-                                <?php elseif ($t['status'] = 3) : ?>
+                                <?php elseif ($t['status_transaksi'] === '3') : ?>
                                     Selesai
                                 <?php else : ?>
                                     Ditolak
