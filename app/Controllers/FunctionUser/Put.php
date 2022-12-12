@@ -187,9 +187,8 @@ class Put extends BaseController
                 return redirect()->to(previous_url());
 
                 break;
-
-
             default:
+                session()->setFlashdata('error', 'Gagal edit');
                 return redirect()->to(base_url('setting'));
                 break;
         }

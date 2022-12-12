@@ -18,6 +18,7 @@ class Post extends BaseController
             return redirect()->to(previous_url());
         }
         $produk = $this->Produk->where('id', $id)->first();
+        $stok = $produk['stok'];
         if (!$produk) {
             session()->setFlashdata('error', 'Produk tidak valid');
             return redirect()->to(previous_url());
@@ -27,6 +28,12 @@ class Post extends BaseController
             return redirect()->to(previous_url());
         }
         $order = $this->request->getVar('order');
+        if ($stok < $order) {
+            $pesan = '@' . user()->username . ' gagal order produk "' . $produk['nama'] . '" dengan jumlah pesanan ' . $order . ' Kg karena stok tidak mencukupi, silahkan tambah stoknya.';
+            kirim_admin($pesan);
+            session()->setFlashdata('error', 'Stok produk ' . $produk['nama'] . ' tidak mencukupi');
+            return redirect()->to(previous_url());
+        }
         if ($order < $produk['minorder']) {
             session()->setFlashdata('error', 'Minimal order produk ' . $produk['nama'] . ' adalah ' . $produk['minorder'] . ' Kg');
             return redirect()->to(previous_url());
@@ -43,7 +50,7 @@ class Post extends BaseController
                 'status'    => 1
             ]
         );
-        session()->setFlashdata('pesan', 'Produk ' . $produk['nama'] . ' berhasil di order. <br>Harap segera melakukan pembayaran');
+        session()->setFlashdata('pesan', 'Produk ' . $produk['nama'] . ' berhasil di order. <br>Harap menunggu produk di kirim.');
         return redirect()->to(base_url('order/detail/' . $trans->getInsertID()));
     }
 }

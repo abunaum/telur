@@ -93,6 +93,12 @@
         "list": false
       },
       {
+        "url": "/bendahara/invoice/(:any)",
+        "controller": "Bendahara",
+        "class": "invoice/$1",
+        "list": false
+      },
+      {
         "url": "/bendahara-setting",
         "controller": "Bendahara",
         "class": "setting",

@@ -46,11 +46,17 @@ class Admin extends BaseController
 
     public function transaksi()
     {
+        $transaksi = $this->Transaksi;
+        $transaksi->join('produk', 'produk.id = produk_id', 'LEFT');
+        $transaksi->select('transaksi.*');
+        $transaksi->select('produk.nama as nama_produk');
+        $transaksi = $transaksi->findAll();
         $data = [
             'namaweb' => $this->namaweb,
-            'halaman' => "Transaksi"
+            'halaman' => "Transaksi",
+            'transaksi' => $transaksi
         ];
-        return view('admin/index', $data);
+        return view('admin/transaksi', $data);
     }
 
     public function produk()

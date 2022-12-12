@@ -131,13 +131,13 @@
                                             <td valign="top" style="padding: 20px;">
                                                 <h3 style="border-bottom: 1px solid #000; color: #000; font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 18px; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 15px; padding-bottom: 5px;">
                                                     Detail Order &nbsp;
-                                                    <?php if ($transaksi['status'] = 0) : ?>
+                                                    <?php if ($transaksi['status_transaksi'] === '0') : ?>
                                                         (Ditolak)
-                                                    <?php elseif ($transaksi['status'] = 1) : ?>
+                                                    <?php elseif ($transaksi['status_transaksi'] === '1') : ?>
                                                         (Menunggu Di Proses)
-                                                    <?php elseif ($transaksi['status'] = 2) : ?>
+                                                    <?php elseif ($transaksi['status_transaksi'] === '2') : ?>
                                                         (Dikirim)
-                                                    <?php elseif ($transaksi['status'] = 3) : ?>
+                                                    <?php elseif ($transaksi['status_transaksi'] === '3') : ?>
                                                         (Selesai)
                                                     <?php endif; ?>
                                                 </h3>
@@ -175,7 +175,8 @@
                 <a href="<?= base_url('transaksi-user'); ?>">
                     <button type="button" class="btn btn-info">List transaksi</button>
                 </a>
-                <?php if ($transaksi['status'] === '1') : ?>
+                <?php $status = $transaksi['status_transaksi']; ?>
+                <?php if ($status === '1') : ?>
                     <form class="d-inline" method="post" action="<?= base_url('bendahara/order/kirim/' . $transaksi['id']) ?>">
                         <?= csrf_field() ?>
                         <input type="hidden" name="_method" value="PUT" />
@@ -190,7 +191,7 @@
                             <i class="ri-close-circle-line me-1"></i>Tolak
                         </button>
                     </form>
-                <?php elseif ($transaksi['status'] = 2) : ?>
+                <?php elseif ($status === '2') : ?>
                     <a href="<?= base_url('bendahara/invoice/' . $transaksi['kode']); ?>" target="_blank">
                         <button type="button" class="btn btn-warning">Cetak Invoice</button>
                     </a>
@@ -222,6 +223,23 @@
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Kirim',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.form.submit();
+            }
+        })
+    })
+    $(".tolak-order").on('click', function(e) {
+        var kode = $(this).data('transaksi');
+        Swal.fire({
+            title: 'Anda yakin?',
+            text: 'Mau akan menolak transaksi ' + kode + ' ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Tolak',
             cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {

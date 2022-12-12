@@ -282,9 +282,8 @@ class Put extends BaseController
                 session()->setFlashdata('pesan', 'Notifikasi berhasil aktif');
                 return redirect()->to(previous_url());
                 break;
-
-
             default:
+                session()->setFlashdata('error', 'Tidak ada settingan');
                 return redirect()->to(base_url('setting'));
                 break;
         }
@@ -413,7 +412,7 @@ class Put extends BaseController
                 break;
 
             default:
-                session()->setFlashdata('error', 'Apa yang mau di edit?');
+                session()->setFlashdata('error', 'Gagal update produk');
                 return redirect()->to(previous_url());
                 break;
         }

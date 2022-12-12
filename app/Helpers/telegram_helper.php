@@ -41,6 +41,16 @@ function kirim_user($pesan)
     }
 }
 
+function kirim_sigle($iduser, $pesan)
+{
+    helper('datauser');
+    $user = getuser($iduser);
+    if ($user['tele_status'] === 'valid') {
+        $tele_id = $user['tele_id'];
+        kirimpesan($tele_id, $pesan);
+    }
+}
+
 function kirim_bendahara($pesan)
 {
     helper('group');

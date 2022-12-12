@@ -187,9 +187,8 @@ class Put extends BaseController
                 return redirect()->to(previous_url());
 
                 break;
-
-
             default:
+                session()->setFlashdata('error', 'Aksi tidak valid');
                 return redirect()->to(base_url('setting'));
                 break;
         }
@@ -207,18 +206,58 @@ class Put extends BaseController
             session()->setFlashdata('error', 'Transaksi tidak ditemukan');
             return redirect()->to(previous_url());
         }
+
+        $Produk = $this->Produk->where('id', $Transaksi['produk_id'])->first();
+
+        if (!$Produk) {
+            session()->setFlashdata('error', 'Produk tidak ditemukan');
+            return redirect()->to(previous_url());
+        }
+        $kode = $Transaksi['kode'];
+        $namaproduk = $Produk['nama'];
+        $totalharga = $Transaksi['total_harga'];
+        $hargaproduk = $Transaksi['total_harga'] / $Transaksi['jumlah'];
+        $user_id = $Transaksi['user_id'];
+        $idproduk = $Produk['id'];
+        $oldstok = $Produk['stok'];
+        $jumlah = $Transaksi['jumlah'];
+        $newstok = $oldstok - $jumlah;
+        $hargatotalidr = number_to_currency($totalharga, 'IDR', 'id_ID');
+        $hargaprodukidr = number_to_currency($hargaproduk, 'IDR', 'id_ID');
         switch ($value) {
             case 'kirim':
+                if ($oldstok < $jumlah) {
+                    session()->setFlashdata('error', 'Stok tidak mencukupi');
+                    return redirect()->to(previous_url());
+                }
                 $this->Transaksi->save([
                     'id' => $id,
                     'status' => 2
                 ]);
-                session()->setFlashdata('pesan', $Transaksi['kode'] . ' berhasil di kirim. <br>Silahakan cetak Invoice.');
+                $this->Produk->save([
+                    'id' => $idproduk,
+                    'stok' => $newstok,
+                ]);
+                $pesan = "Produk telah dikirim. \nKode Transaksi : $kode \nNama Produk : $namaproduk\nHarga : $hargaprodukidr / Kg\nJumlah Order : $jumlah Kg\nTotal Bayar : $hargatotalidr \n \nSilahkan siapkan uang anda untuk pembayaran \n \nTerima kasih telah berbelanja di toko kami";
+                kirim_sigle($user_id, $pesan);
+                session()->setFlashdata('pesan', $kode . ' berhasil di kirim. <br>Silahakan cetak Invoice.');
+                return redirect()->to(previous_url());
+                break;
+
+            case 'tolak':
+                $this->Transaksi->save([
+                    'id' => $id,
+                    'status' => 0
+                ]);
+                $pesan = "Transaksi anda telah di tolak. \nKode Transaksi : $kode \nNama Produk : $namaproduk\nHarga : $hargaprodukidr / Kg\nJumlah Order : $jumlah Kg\n \nSilahkan hubungi admin untuk informasi lebih lanjut \n \nTerima kasih telah berbelanja di toko kami";
+                kirim_sigle($user_id, $pesan);
+                session()->setFlashdata('pesan', $Transaksi['kode'] . ' berhasil di tolak.');
                 return redirect()->to(previous_url());
                 break;
 
 
             default:
+                session()->setFlashdata('error', 'Aksi tidak valid');
                 return redirect()->to(previous_url());
                 break;
         }
