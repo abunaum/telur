@@ -58,7 +58,8 @@ class Bendahara extends BaseController
         return view('bendahara/detail_order', $data);
     }
 
-    public function invoice($kode = 0){
+    public function invoice($kode = 0)
+    {
         $transaksi = $this->Transaksi;
         $transaksi->join('produk', 'produk.id = produk_id', 'RIGHT');
         $transaksi->join('users', 'users.id = user_id', 'RIGHT');
@@ -81,6 +82,18 @@ class Bendahara extends BaseController
             'transaksi' => $transaksi,
         ];
         return view('bendahara/invoice', $data);
+    }
+
+    public function keuangan()
+    {
+        $LogSaldo = $this->Log_Saldo->findAll();
+        $data = [
+            'namaweb' => $this->namaweb,
+            'halaman' => "Keuangan",
+            'LogSaldo' => $LogSaldo,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('bendahara/keuangan', $data);
     }
 
     public function setting()

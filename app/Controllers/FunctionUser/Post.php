@@ -50,6 +50,8 @@ class Post extends BaseController
                 'status'    => 1
             ]
         );
+        $pesan = '@' . user()->username . ' melakukan order dengan kode transaksi ' . $kode . '\nHarap segera konfirmasi orderan tersebut.';
+        kirim_bendahara($pesan);
         session()->setFlashdata('pesan', 'Produk ' . $produk['nama'] . ' berhasil di order. <br>Harap menunggu produk di kirim.');
         return redirect()->to(base_url('order/detail/' . $trans->getInsertID()));
     }

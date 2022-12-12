@@ -87,6 +87,14 @@
         "icon": "ri-shopping-cart-line"
       },
       {
+        "url": "/kelola-dana",
+        "controller": "Bendahara",
+        "class": "keuangan",
+        "name": "Keuangan",
+        "list": true,
+        "icon": "ri-money-dollar-circle-line"
+      },
+      {
         "url": "/transaksi-user/detail/(:num)",
         "controller": "Bendahara",
         "class": "detailorder/$1",
