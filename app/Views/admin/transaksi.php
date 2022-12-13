@@ -5,6 +5,44 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
+<?php if (session()->getFlashdata('error')) : ?>
+    <script>
+        var err = '<?= session()->getFlashdata('error'); ?>';
+        Swal.fire({
+            title: 'Ooops!',
+            html: err,
+            icon: 'error',
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {},
+            willClose: () => {}
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {}
+        })
+    </script>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('pesan')) : ?>
+    <script>
+        var pesan = '<?= session()->getFlashdata('pesan'); ?>';
+        Swal.fire({
+            title: 'Mantap',
+            html: pesan,
+            icon: 'success',
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {},
+            willClose: () => {}
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {}
+        })
+    </script>
+<?php endif; ?>
+<!-- Begin Page Content -->
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -39,7 +77,7 @@
                             </td>
                             <td>
                                 <?php if ($t['status'] === '1') : ?>
-                                    Menunggu Respon
+                                    Menunggu Respon Bendahara
                                 <?php elseif ($t['status'] === '2') : ?>
                                     Dikirim
                                 <?php elseif ($t['status'] === '3') : ?>
@@ -49,7 +87,7 @@
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="<?= base_url('transaksi-user/detail/' . $t['id']); ?>">
+                                <a href="<?= base_url('detail-transaksi/' . $t['id']); ?>">
                                     <button type="button" class="btn btn-info">Detail</button>
                                 </a>
                             </td>

@@ -49,53 +49,8 @@
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <h1 class="h3 mb-4 text-gray-800">
-                Keuangan |&nbsp;
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahlog">
-                    <i class="ri-file-add-fill me-1"></i>
-                    Tambah
-                </button>
+                Log Keuangan
             </h1>
-            <div class="modal fade" id="tambahlog" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Tambah Data Keuangan</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Batal"></button>
-                        </div>
-                        <form method="post" action="<?= base_url('bendahara/keuangan/tambah'); ?>">
-                            <?= csrf_field() ?>
-                            <div class="modal-body">
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Jenis</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-select" aria-label="Jenis" name="jenis" id="jenis">
-                                            <option value="keluar">Pengeluaran</option>
-                                            <option value="masuk">Pemasukan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Nominal</label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="nominal-add">Rp.</span>
-                                            <input type="text" class="form-control" placeholder="1000" aria-label="nominal" id="nominal" name="nominal" aria-describedby="nominal-add">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <span class="input-group-text">Keterangan</span>
-                                    <textarea class="form-control" name="keterangan" id="keterangan" aria-label="With textarea"></textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary tambah_dana_log">Tambah</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
             <table id="keuangan" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -132,7 +87,7 @@
                                     $getkode = explode('dengan kode transaksi ', $ls['keterangan']);
                                     $kode = $getkode[1];
                                     ?>
-                                    <form action="<?= base_url('transaksi-user/cek-kode/' . $kode); ?>" method="post">
+                                    <form action="<?= base_url('transaksi/cek-kode/' . $kode); ?>" method="post">
                                         <?= csrf_field() ?>
                                         <button type="submit" class="btn btn-info">Detail</button>
                                     </form>
@@ -167,41 +122,5 @@
             ]
         });
     });
-    $(".tambah_dana_log").on('click', function(e) {
-        var nominalawal = document.getElementById("nominal").value.toString();
-        var nominal = nominalawal.split('.').join("");
-        document.getElementById("nominal").value = parseInt(nominal);
-        this.form.submit();
-    });
-</script>
-<script type="text/javascript">
-    var rupiah = document.getElementById('nominal');
-    rupiah.addEventListener('keyup', function(e) {
-        // tambahkan 'Rp.' pada saat form di ketik
-        // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-        if (this.value.charAt(0) === '0') {
-            rupiah.value = '';
-        } else {
-            rupiah.value = formatRupiah(this.value, '');
-        }
-    });
-
-    /* Fungsi formatRupiah */
-    function formatRupiah(angka, prefix) {
-        var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split = number_string.split(','),
-            sisa = split[0].length % 3,
-            rupiah = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-        // tambahkan titik jika yang di input sudah menjadi angka ribuan
-        if (ribuan) {
-            separator = sisa ? '.' : '';
-            rupiah += separator + ribuan.join('.');
-        }
-
-        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-        return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
-    }
 </script>
 <?= $this->endSection(); ?>

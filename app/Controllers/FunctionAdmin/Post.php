@@ -142,6 +142,21 @@ class Post extends BaseController
         return redirect()->to(base_url('/user'));
     }
 
+    public function cekkode($kode = null)
+    {
+        if (!$kode) {
+            session()->setFlashdata('error', 'Transaksi tidak valid');
+            return redirect()->to(previous_url());
+        }
+        $transaksi = $this->Transaksi->where('kode', $kode)->first();
+        if (!$transaksi) {
+            session()->setFlashdata('error', 'Transaksi tidak valid');
+            return redirect()->to(previous_url());
+        } else {
+            return redirect()->to(base_url('detail-transaksi/' . $transaksi['id']));
+        }
+    }
+
     public function tambah_bendahara()
     {
         $nama = $this->request->getVar('nama');

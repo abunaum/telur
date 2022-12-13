@@ -37,6 +37,20 @@
         "icon": "ri-shopping-cart-2-line"
       },
       {
+        "url": "/log-keuangan",
+        "controller": "Admin",
+        "class": "log_keuangan",
+        "name": "Log Keuangan",
+        "list": true,
+        "icon": "ri-file-list-3-line"
+      },
+      {
+        "url": "/detail-transaksi/(:num)",
+        "controller": "Admin",
+        "class": "detail_transaksi/$1",
+        "list": false
+      },
+      {
         "div": true,
         "text": "Bendahara",
         "role": "admin"

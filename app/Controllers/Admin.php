@@ -59,6 +59,32 @@ class Admin extends BaseController
         return view('admin/transaksi', $data);
     }
 
+    public function detail_transaksi($id = 0)
+    {
+        $transaksi = $this->Transaksi;
+        $transaksi->join('produk', 'produk.id = produk_id', 'RIGHT');
+        $transaksi->join('users', 'users.id = user_id', 'RIGHT');
+        $transaksi->select('transaksi.*');
+        $transaksi->select('transaksi.status as status_transaksi');
+        $transaksi->select('users.username');
+        $transaksi->select('users.fullname');
+        $transaksi->select('users.email');
+        $transaksi->select('users.alamat');
+        $transaksi->select('produk.nama as nama_produk');
+        $transaksi->where('transaksi.id', $id);
+        $transaksi = $transaksi->first();
+        if (!$transaksi) {
+            session()->setFlashdata('error', 'Transaksi tidak valid');
+            return redirect()->to(previous_url());
+        }
+        $data = [
+            'namaweb' => $this->namaweb,
+            'halaman' => "Order Detail",
+            'transaksi' => $transaksi,
+        ];
+        return view('admin/detail_order', $data);
+    }
+
     public function produk()
     {
         $produk = $this->Produk->findAll();
@@ -69,6 +95,17 @@ class Admin extends BaseController
             'validation' => \Config\Services::validation()
         ];
         return view('admin/produk', $data);
+    }
+
+    public function log_keuangan()
+    {
+        $LogSaldo = $this->Log_Saldo->findAll();
+        $data = [
+            'namaweb' => $this->namaweb,
+            'halaman' => "Log Keuangan",
+            'LogSaldo' => $LogSaldo,
+        ];
+        return view('admin/keuangan', $data);
     }
 
     public function bendahara()

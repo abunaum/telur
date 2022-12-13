@@ -16,6 +16,26 @@
         "url": "/admin/bendahara/tambah",
         "controller": "FunctionAdmin\\Post",
         "class": "tambah_bendahara"
+      },
+      {
+        "url": "/transaksi/cek-kode/(:any)",
+        "controller": "FunctionAdmin\\Post",
+        "class": "cekkode/$1"
+      }
+    ]
+  },
+  {
+    "role": "bendahara",
+    "data": [
+      {
+        "url": "/transaksi-user/cek-kode/(:any)",
+        "controller": "FunctionBendahara\\Post",
+        "class": "cekkode/$1"
+      },
+      {
+        "url": "/bendahara/keuangan/tambah",
+        "controller": "FunctionBendahara\\Post",
+        "class": "tambah_keuangan"
       }
     ]
   },
