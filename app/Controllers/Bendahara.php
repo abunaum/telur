@@ -8,11 +8,33 @@ class Bendahara extends BaseController
 {
     public function index()
     {
+        $transaksi = $this->Transaksi;
+        $ts = $transaksi->where('status', 3)->countAllResults();
+        $tk = $transaksi->where('status', 2)->countAllResults();
+        $tp = $transaksi->where('status', 1)->countAllResults();
+        $tt = $transaksi->where('status', 0)->countAllResults();
+        $LogSaldo = $this->Log_Saldo;
+        $clsm = $LogSaldo->where('jenis', 'masuk')->findAll();
+        $nlsm = 0;
+        foreach ($clsm as $value) {
+            $nlsm += $value['nominal'];
+        }
+        $lsk = $LogSaldo->where('jenis', 'keluar')->findAll();
+        $nlsk = 0;
+        foreach ($lsk as $value) {
+            $nlsk += $value['nominal'];
+        }
         $data = [
             'namaweb' => $this->namaweb,
-            'halaman' => "Dashboard"
+            'halaman' => "Dashboard",
+            'ts' => $ts,
+            'tk' => $tk,
+            'tp' => $tp,
+            'tt' => $tt,
+            'nlsm' => $nlsm,
+            'nlsk' => $nlsk,
         ];
-        return view('dashboard', $data);
+        return view('bendahara/dashboard', $data);
     }
 
     public function transaksi()

@@ -8,11 +8,20 @@ class User extends BaseController
 {
     public function index()
     {
+        $transaksi = $this->Transaksi->where('user_id', user()->id);
+        $ts = $transaksi->where('status', 3)->countAllResults();
+        $tk = $transaksi->where('status', 2)->countAllResults();
+        $tp = $transaksi->where('status', 1)->countAllResults();
+        $tt = $transaksi->where('status', 0)->countAllResults();
         $data = [
             'namaweb' => $this->namaweb,
-            'halaman' => "Dashboard"
+            'halaman' => "Dashboard",
+            'ts' => $ts,
+            'tk' => $tk,
+            'tp' => $tp,
+            'tt' => $tt,
         ];
-        return view('dashboard', $data);
+        return view('user/dashboard', $data);
     }
 
     public function produk()
