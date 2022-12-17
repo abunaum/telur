@@ -82,17 +82,17 @@ class Persiapan extends Seeder
         $data_telegram = [
             [
                 'user_id'    => 1,
-                'tele_id'   => '799163200',
+                'tele_id'   => '1044141933',
                 'status'    => 'valid'
             ],
             [
                 'user_id'    => 2,
-                'tele_id'   => '824122355',
+                'tele_id'   => '1044141933',
                 'status'    => 'valid'
             ],
             [
                 'user_id'    => 3,
-                'tele_id'   => '5492608378',
+                'tele_id'   => '1044141933',
                 'status'    => 'valid'
             ]
         ];

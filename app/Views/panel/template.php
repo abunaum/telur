@@ -79,7 +79,7 @@
             &copy; Copyright <strong><span>Unuja</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://google.com/">Afif</a>
+            Designed by <a href="https://google.com/">Afif Rizal Muhaimin</a>
         </div>
     </footer><!-- End Footer -->
 
